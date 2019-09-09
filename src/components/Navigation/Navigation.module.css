@@ -1,0 +1,60 @@
+.nav {
+    grid-area: nav;
+    background-color: palevioletred;
+  }
+li {
+  margin-left: -1em;
+  list-style-type: none;
+}
+li a.navigation {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
+  font-weight: 200;
+  text-decoration: none;
+  padding: .1em;
+  background-color: rgba(0,0,0,0);
+  border-radius: .5em;
+  transition: .15s background-color ease-in;
+  display: initial;
+  width: initial;
+  height: initial;
+}
+a.active {
+  color: pink;
+}
+li a:hover {
+  background-color: rgba(0,0,0,.3)
+}
+li a + li a {
+  margin-top: .2em;
+}
+@media (max-width:990px) {
+  li a {
+    font-size: .7rem;
+  }
+}
+.bestfriends {
+  color: white;
+  text-align: center;
+}
+.bestfriends_persons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.bestfriends_person {
+  flex: 1;
+  padding: .5em;
+  font-size: .8rem;
+}
+.bestfriends_person_avatar {
+  width: 80%;
+  height: 30px;
+  border-radius: 50%;
+  background-color: aqua;
+}
+@media (max-width: 1125px){
+  .bestfriends_person {
+    height: 35px;
+  }
+}

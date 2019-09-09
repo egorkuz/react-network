@@ -1,0 +1,7 @@
+.profileInfo {
+    margin-top: .5em;
+    margin-left: 1em;
+}
+.profileInfo__avatar {
+    width: 10%;
+}

@@ -1,0 +1,27 @@
+
+a {
+    display: block;
+    border-radius: .1em;
+    width: 100%;
+    height: 3em;
+    text-decoration: none;
+    font-weight: 400;
+    color: black;
+}
+.active {
+    animation: scale .15s ease-in;
+    animation-fill-mode: forwards;
+    text-decoration: none;
+    background-color: rgba(0,0,0, .3)
+}
+@keyframes scale {
+    from {
+        font-size: 1em;
+    }
+    to {
+        font-size: 1.3em;
+    }
+}
+.name + .name {
+    border-top: 1px solid grey;
+}

@@ -1,0 +1,8 @@
+.dialogs {
+    grid-area: content;
+    display: flex;
+    flex-direction: row;
+}
+h2 {
+    padding: .1em;
+}

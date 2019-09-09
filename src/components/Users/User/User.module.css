@@ -1,0 +1,37 @@
+.user {
+    display: flex;
+    width: 50%;
+    flex-direction: row;
+    background-color: white;
+    margin: 10px;
+}
+.user__image {
+    display: flex;
+    flex-direction: column;
+    vertical-align: baseline;
+    padding: .5em;
+}
+.user__image > figure {
+    margin: 0 0 .1em 0; 
+}
+.user__image__avatar {
+    height: inherit;
+}
+.user__body {
+    flex: 5;
+    padding: .5em;
+}
+.button {
+    box-sizing: border-box;
+    display: block;
+    align-self: center;
+    width: 128px;
+    height: 2em;
+    border-radius: .5em;
+}
+.button_follow {
+    background-image: radial-gradient(pink,aqua)
+}
+.button_unfollow {
+    background-image: radial-gradient(pink,#00FF66);
+}

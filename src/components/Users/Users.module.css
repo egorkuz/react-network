@@ -1,0 +1,10 @@
+.activePage {
+    color: white;
+}
+.button_showMore {
+    padding: 1em;
+    margin: 0 auto;
+}
+.pagination {
+    margin-left: 10px;
+}

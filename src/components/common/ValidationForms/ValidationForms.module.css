@@ -1,0 +1,20 @@
+.textarea {
+    font-size: 13.3333px;
+    width: 50%;
+    margin-top: .5em;
+    margin-left: 1em;
+    border: 1px solid blue;
+    border-radius: .3em;
+  }
+  .textarea > * {
+    width: calc(100% - 4px);
+  }
+  .textarea_zeroValueError,.textarea_maxLengthError {
+      border: 2px solid red;
+  }
+  .textarea_zeroValueError::after{
+      content: "Введите как минимум 1 символ"
+  }
+  .textarea_maxLengthError::after {
+      content: "Максимальная длинна сообщения 40 символов"
+  }

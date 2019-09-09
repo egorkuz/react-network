@@ -1,0 +1,9 @@
+.header {
+    grid-area: header;
+    background-color: aqua;
+  }
+.button_logout {
+  display: block;
+  border-radius: .3em;
+  background: radial-gradient(ellipse at center, #CCDFFA, #399EE2);
+}

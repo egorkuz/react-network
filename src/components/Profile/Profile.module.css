@@ -1,0 +1,7 @@
+.profile__hero {
+  width: 100%;
+  height: 300px;
+  background-image: url(https://si.wsj.net/public/resources/images/BN-VQ519_LEAVIN_M_20171017153717.jpg);
+  background-size: cover;
+  background-position: 70% 70%;
+}

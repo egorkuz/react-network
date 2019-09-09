@@ -1,0 +1,21 @@
+.button {
+    display: inline;
+    border-radius: .5em;
+    margin-left: -.2em;
+    background-image: radial-gradient(pink,aqua)
+}
+.like {
+    position: relative;
+    margin-right: .5em;
+}
+p {
+    margin: 0;
+}
+.post_wrapper {
+    width: 50%;
+    margin: 2em 0 2em 1em;
+    padding: .5em;
+    padding-bottom: 1em;
+    background-image: radial-gradient(bisque,white);
+    border-radius: .5em;
+}
