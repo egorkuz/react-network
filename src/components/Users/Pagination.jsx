@@ -7,8 +7,8 @@ const Pagination = (props) => {
     for (let i=1; i <=pagesCount; i++){
         pages.push(i)}
     let pagesCountToRender = pages.map(page=>{
-                return(<span onClick={(e)=>{this.onPageChanged(page)}} className={this.props.currentPage===page&&styles.activePage}>{`${page} `}</span>)
-        )}
+                return<span onClick={(e)=>{this.onPageChanged(page)}} className={this.props.currentPage===page&&styles.activePage}>{`${page} `}</span>
+        })
     return <div>{pagesCountToRender}</div>
     }
     
