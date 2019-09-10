@@ -4,6 +4,7 @@ import HeaderAPIComponent from "./components/Header/HeaderContain"
 import NavigationContain from './components/Navigation/NavigationContain';
 import DialogsContain from './components/Dialogs/DialogsContain';
 import UsersContain from './components/Users/UsersContain'
+import LatestComments from './components/Sidebar/LatestComments'
 import {Route} from 'react-router-dom'
 import ProfileContain from './components/Profile/ProfileContain';
 import LoginContain from './components/Login/LoginContain'
@@ -30,12 +31,11 @@ class App extends React.Component{
     <div className="app-wrapper">
       <HeaderAPIComponent />
       <NavigationContain store={this.props.store} />
-      <div className='content'>
+            <div className='content'>
         <Route path='/profile/:userId?' render={ ()=> <ProfileContain store={this.props.store} /> } />
         <Route path='/dialogs' render={ ()=> <DialogsContain /> } />
         <Route path='/users' render={ ()=> <UsersContain /> } />
         <Route path='/login' render={ ()=> <LoginContain/> } />
-        <Route path='/login' render={ ()=> <LatestComments/> } />
       </div>
       </div>
     )
