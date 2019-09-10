@@ -35,6 +35,7 @@ class App extends React.Component{
         <Route path='/dialogs' render={ ()=> <DialogsContain /> } />
         <Route path='/users' render={ ()=> <UsersContain /> } />
         <Route path='/login' render={ ()=> <LoginContain/> } />
+        <Route path='/login' render={ ()=> <LatestComments/> } />
       </div>
       </div>
     )
