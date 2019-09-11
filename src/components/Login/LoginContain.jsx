@@ -1,4 +1,5 @@
 import React from 'react'
+import style from './Login.module.css'
 import {reduxForm, Field, Form} from 'redux-form'
 import {Input} from '../common/ValidationForms/ValidationForms'
 import {required,maxLengthCreator} from '../../utils/validation/validation'
@@ -9,8 +10,9 @@ import {Redirect} from 'react-router-dom'
 let maxLengthCreatorValidate = maxLengthCreator(40)
 
 const LoginForm = (handleSubmit,error) => {
+    console.log(error)
         return (
-            <Form onSubmit={handleSubmit}>
+            <Form className={style.loginForm} onSubmit={handleSubmit}>
             <div>
                 <Field validate={[required,maxLengthCreatorValidate]} placeholder={'login'} name={"email"} component={Input}/> 
             </div>
@@ -23,7 +25,7 @@ const LoginForm = (handleSubmit,error) => {
             <div>
                 <button type='submit'>Submit</button>
             </div>
-            {error&&<span>{`${error}`}</span>}
+            {Object.keys(error).length != 0 && error&&<span>{`${error}`}</span>}
         </Form>
         )
     }
@@ -39,9 +41,9 @@ class LoginContain extends React.Component {
             <Redirect to="/profile" />
             :
         <section>
-            <h1>Login</h1>
+            <h1 className={style.login__name}>Login</h1>
             <LoginReduxForm onSubmit={this.onSubmit}/>
-            <p>Вы не залогинены</p>
+            <p className={style.notLogined}>Вы не залогинены</p>
         </section>)
     }
 }

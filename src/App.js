@@ -28,7 +28,6 @@ class App extends React.Component{
   }
   else {
   return (
-    <div className="background">
     <div className="app-wrapper">
       <HeaderAPIComponent />
       <NavigationContain store={this.props.store} />
@@ -38,7 +37,7 @@ class App extends React.Component{
         <Route path='/dialogs' render={ ()=> <DialogsContain /> } />
         <Route path='/users' render={ ()=> <UsersContain /> } />
         <Route path='/login' render={ ()=> <LoginContain/> } />
-      </div></div></div>
+      </div></div>
     )
 }}}
 
