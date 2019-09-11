@@ -1,15 +1,26 @@
+.background {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #e6ecf0
+}
 .app-wrapper {
   display: grid;
   grid-template-areas:
   "header header header"
-  "nav content latest comments";
-  grid-template-rows: 8vh 1fr;
+  "nav content sidebar";
+  grid-template-rows: 8vh 1fr ;
   grid-template-columns: 12% calc(76% - 10px) 12%;
   gap: 5px; 
 }
 .content {
   grid-area: content;
   background-color: crimson;
+ }
+ .sidebar {
+   background-color: orange
  }
 
 

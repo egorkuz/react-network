@@ -28,16 +28,17 @@ class App extends React.Component{
   }
   else {
   return (
+    <div className="background">
     <div className="app-wrapper">
       <HeaderAPIComponent />
       <NavigationContain store={this.props.store} />
+      <LatestComments />
             <div className='content'>
         <Route path='/profile/:userId?' render={ ()=> <ProfileContain store={this.props.store} /> } />
         <Route path='/dialogs' render={ ()=> <DialogsContain /> } />
         <Route path='/users' render={ ()=> <UsersContain /> } />
         <Route path='/login' render={ ()=> <LoginContain/> } />
-      </div>
-      </div>
+      </div></div></div>
     )
 }}}
 

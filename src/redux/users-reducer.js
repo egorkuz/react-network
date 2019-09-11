@@ -8,9 +8,11 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 const SET_IS_FETCHING = 'SET_IS_FETCHING'
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
+const SET_FIRST_THREE_USERS = "users-reducer/SET_FIRST_THREE_USERS"
 
 let initialUsers = {
         users:[],
+        firstThreeUsers: [],
         pageSize: 2,
         totalUsersCount: 0,
         currentPage: 1,
@@ -20,10 +22,17 @@ let initialUsers = {
 
 export const usersReducer = (state = initialUsers,action) => {
     switch (action.type) {
-        case FOLLOW:
-        return {
-            ...state,
-            users: updateObjectsInArray(state.users,'id',action.userID,{followed:true})
+        case FOLLOW:{
+            return {
+                ...state,
+                users: state.users.map(u=>{
+                    if (u.id===action.userID){
+                        return ({...u, followed: true})
+                    }
+                    return u
+                })
+            }
+            //users: updateObjectsInArray(state.users,'id',action.userID,{followed:true})
         }
         case UNFOLLOW:
                 return {
@@ -64,6 +73,12 @@ export const usersReducer = (state = initialUsers,action) => {
                 : state.followingInProgress.filter(id=>id!=action.userID)
             }
         }
+        case SET_FIRST_THREE_USERS: {
+            return {
+                ...state,
+                firstThreeUsers: action.firstThreeUsers
+            }
+        }
         default:
             return state;
       }
@@ -74,12 +89,18 @@ export const getUsers = (currentPage,pageSize) => {
             dispatch(setIsFetching(true)) 
             dispatch(setCurrentPage(currentPage))
             let data = await usersAPI.getUsers(currentPage,pageSize)
-
             dispatch(setIsFetching(false))
             dispatch(setUsers(data.items))
             data.totalCount>100?dispatch(setTotalUsers(55)):dispatch(setTotalUsers(data.totalCount))
 }}
-
+export const getFirstThreeUsers = () => {
+    return async (dispatch) => {
+        dispatch(setIsFetching(true))
+        let firstThreeUsers = await usersAPI.getFirstThreeUsers()
+        dispatch(setFirstThreeUsers(firstThreeUsers.items))
+        dispatch(setIsFetching(false))
+    }
+}
 const followUnfollowFlow = async (id, dispatch, apiMethod,actionCreator) => {
     dispatch(toggleFollowingInProgress(true,id))
     let res = await apiMethod(id)
@@ -109,6 +130,7 @@ export const followThunk = (id) =>
 export const follow = (userID) => ({type: FOLLOW, userID})
 export const unfollow = (userID) => ({type: UNFOLLOW, userID})
 export const setUsers = (users) => ({type: SET_USERS, users})
+export const setFirstThreeUsers = (firstThreeUsers) => ({type: SET_FIRST_THREE_USERS, firstThreeUsers})
 export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page})
 export const setTotalUsers = (totalUsers) => ({type: SET_TOTAL_USERS_COUNT,totalUsers})
 export const setIsFetching = (isFetching) => ({type: SET_IS_FETCHING,isFetching})

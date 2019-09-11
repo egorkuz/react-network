@@ -1,6 +1,6 @@
 .nav {
     grid-area: nav;
-    background-color: palevioletred;
+    background-color: transparent;
   }
 li {
   margin-left: -1em;
@@ -8,7 +8,7 @@ li {
 }
 li a.navigation {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color: white;
+  color: lightseagreen;
   font-weight: 200;
   text-decoration: none;
   padding: .1em;
@@ -34,7 +34,7 @@ li a + li a {
   }
 }
 .bestfriends {
-  color: white;
+  color: lightseagreen;
   text-align: center;
 }
 .bestfriends_persons {
@@ -42,19 +42,7 @@ li a + li a {
   flex-direction: row;
   width: 100%;
 }
-.bestfriends_person {
-  flex: 1;
-  padding: .5em;
-  font-size: .8rem;
-}
-.bestfriends_person_avatar {
-  width: 80%;
-  height: 30px;
-  border-radius: 50%;
-  background-color: aqua;
-}
-@media (max-width: 1125px){
-  .bestfriends_person {
-    height: 35px;
-  }
+.bestfriend {
+  display: block;
+  
 }

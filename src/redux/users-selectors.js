@@ -4,8 +4,6 @@ export const getAllUsersSelector = (state) => {
     return state.usersPage.users
 }
 export const getAllUsers = createSelector(getAllUsersSelector, (users) => {
-    console.log('render')
-    console.log(users)
     return users.filter(u=>u.id>1436)
 })
 
