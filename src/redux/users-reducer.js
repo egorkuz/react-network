@@ -99,6 +99,7 @@ export const getFirstThreeUsers = () => {
         let firstThreeUsers = await usersAPI.getFirstThreeUsers()
         dispatch(setFirstThreeUsers(firstThreeUsers.items))
         dispatch(setIsFetching(false))
+        
     }
 }
 const followUnfollowFlow = async (id, dispatch, apiMethod,actionCreator) => {
