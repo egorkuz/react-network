@@ -14,16 +14,16 @@ const LoginForm = (handleSubmit,error) => {
         return (
             <Form className={style.loginForm} onSubmit={handleSubmit}>
             <div>
-                <Field validate={[required,maxLengthCreatorValidate]} placeholder={'login'} name={"email"} component={Input}/> 
+                <Field validate={[required,maxLengthCreatorValidate]} placeholder={'Логин'} name={"email"} component={Input}/> 
             </div>
             <div>
-                <Field validate={[required,maxLengthCreatorValidate]} placeholder={'password'} name={"password"} type={"password"} component={Input}/> 
+                <Field validate={[required,maxLengthCreatorValidate]} placeholder={'Пароль'} name={"password"} type={"password"} component={Input}/> 
             </div>
             <div>
-                <Field validate={[required,maxLengthCreatorValidate]} type={'checkbox'} name={'rememberMe'} component={'input'}/>Remember me
+                <Field validate={[required,maxLengthCreatorValidate]} type={'checkbox'} name={'rememberMe'} component={'input'}/>Запомнить
             </div>
             <div>
-                <button type='submit'>Submit</button>
+                <button type='submit'>Войти</button>
             </div>
             {Object.keys(error).length != 0 && error&&<span>{`${error}`}</span>}
         </Form>
@@ -41,7 +41,7 @@ class LoginContain extends React.Component {
             <Redirect to="/profile" />
             :
         <section>
-            <h1 className={style.login__name}>Login</h1>
+            <h1 className={style.login__name}>Авторизация</h1>
             <LoginReduxForm onSubmit={this.onSubmit}/>
             <p className={style.notLogined}>Вы не залогинены</p>
         </section>)
