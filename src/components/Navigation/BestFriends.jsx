@@ -10,9 +10,11 @@ class BestFriends extends React.Component {
     {this.props.bestFriends.length!==0?
     <section className={style.bestfriends_persons}>
           <p>Друзья</p>
-          <p className={style.bestfriend}>{this.props.bestFriends[0].name}</p>
-          <p className={style.bestfriend}>{this.props.bestFriends[1].name}</p>
-          <p className={style.bestfriend}>{this.props.bestFriends[2].name}</p>
+          <ul>
+          <li><NavLink to="/profile">{this.props.bestFriends[0].name}</NavLink></li>
+          <li><NavLink to="/profile">{this.props.bestFriends[1].name}</NavLink></li>
+          <li><NavLink to="/profile">{this.props.bestFriends[2].name}</NavLink></li>
+          </ul>
     </section>:<Preloader />} 
     </div>)}}
   

@@ -19,8 +19,6 @@ const AddNewPostReduxForm = reduxForm({form: 'addNewPostForm'})(AddNewPostForm)
 
 
 const Posts = (props) => {
-    let textarea = React.createRef();
-    let button = React.createRef();
     let postsElements = props.postsData.map( post=> {
         return(
         <Post name='Boris' message={post.message} />)
@@ -31,7 +29,7 @@ const Posts = (props) => {
     return (
     <div>
     <AddNewPostReduxForm onSubmit={onAddPost} newPostText={props.newPostText}/>
-        {postsElements}
+    {postsElements}
     </div>
     )}
     

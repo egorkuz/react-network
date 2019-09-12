@@ -1,11 +1,31 @@
 .news {
     background-color: white;
     margin: 2em 2em 3em 2em;
-    padding: .5em 1.5em 1.5em 1em 
+    padding: .7em 1.5em 1.5em 1.2em 
 }
 
 .news img {
     width: 60%; 
+}
+.button {
+    box-sizing: border-box;
+    display: block;
+    align-self: center;
+    width: 128px;
+    height: 2em;
+    border-radius: .5em;
+    background-image: radial-gradient(pink,aqua);
+    margin-top: .2em;
+}
+.news__commentary {
+    margin: 0;
+}
+.news__name {
+    margin-top: .1em;
+    margin-bottom: .1em;
+}
+.news__date {
+    margin-bottom: .4em;
 }
 /*@media (min-width: 1200px) {
     .news img{
