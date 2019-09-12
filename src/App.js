@@ -11,6 +11,7 @@ import {connect} from 'react-redux'
 import {setAuthUserDataThunk} from './redux/auth-reducer'
 import {withRouter} from 'react-router-dom'
 import {compose} from 'redux'
+import LatestComments from "./components/Sidebar/LatestComments"
 import Preloader from './components/common/Preloader/Preloader'
 import {initializedApp} from './redux/app-reducer'
 import NewsListContain from './components/News/NewsListContain'
@@ -30,6 +31,7 @@ class App extends React.Component{
     <div className="app-wrapper">
       <HeaderAPIComponent />
       <NavigationContain store={this.props.store} />
+      <LatestComments />
         <div className='content'>
         <Route path='/news' render={ ()=> <NewsListContain /> } /> 
         <Route path='/profile/:userId?' render={ ()=> <ProfileContain store={this.props.store} /> } />

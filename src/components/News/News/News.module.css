@@ -1,0 +1,13 @@
+.news {
+    background-color: white;
+    margin: 2em 2em 3em 2em;
+    padding: .5em 1.5em 1.5em 1em 
+}
+
+.news img {
+    width: 60%; 
+}
+/*@media (min-width: 1200px) {
+    .news img{
+        width: 800px;
+}}*/
