@@ -4,17 +4,16 @@ import HeaderAPIComponent from "./components/Header/HeaderContain"
 import NavigationContain from './components/Navigation/NavigationContain';
 import DialogsContain from './components/Dialogs/DialogsContain';
 import UsersContain from './components/Users/UsersContain'
-import LatestComments from './components/Sidebar/LatestComments'
 import {Route} from 'react-router-dom'
 import ProfileContain from './components/Profile/ProfileContain';
 import LoginContain from './components/Login/LoginContain'
 import {connect} from 'react-redux'
 import {setAuthUserDataThunk} from './redux/auth-reducer'
-import {logout} from './redux/auth-reducer'
 import {withRouter} from 'react-router-dom'
 import {compose} from 'redux'
 import Preloader from './components/common/Preloader/Preloader'
 import {initializedApp} from './redux/app-reducer'
+import NewsListContain from './components/News/NewsListContain'
 
 class App extends React.Component{
     componentDidMount() {
@@ -31,13 +30,14 @@ class App extends React.Component{
     <div className="app-wrapper">
       <HeaderAPIComponent />
       <NavigationContain store={this.props.store} />
-      <LatestComments />
-            <div className='content'>
+        <div className='content'>
+        <Route path='/news' render={ ()=> <NewsListContain /> } /> 
         <Route path='/profile/:userId?' render={ ()=> <ProfileContain store={this.props.store} /> } />
         <Route path='/dialogs' render={ ()=> <DialogsContain /> } />
         <Route path='/users' render={ ()=> <UsersContain /> } />
         <Route path='/login' render={ ()=> <LoginContain/> } />
-      </div></div>
+      </div>
+      </div>
     )
 }}}
 
