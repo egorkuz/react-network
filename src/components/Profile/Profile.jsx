@@ -12,8 +12,8 @@ const Profile = React.memo(props => {
     return (
     <div>
     <div className={classes.profile__hero}></div>
-        <ProfileInfo status = {props.status} profile={props.profile} updateStatusThunk={props.updateStatusThunk}/>
-        <PostsContain store={props.store}/>
+        <ProfileInfo status = {props.status} profile={props.profile}  updateStatusThunk={props.updateStatusThunk}/>
+        <PostsContain userName={props.userName}/>
     </div>)})
 
 export default Profile;

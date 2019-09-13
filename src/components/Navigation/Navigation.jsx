@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Navigation.module.css';
-import BestFriends from './BestFriends'
+import BestFriendsWithRouter from './BestFriends'
 import {NavLink} from 'react-router-dom';
 
 class Navigation extends React.Component {
@@ -13,11 +13,11 @@ return (<nav className={classes.nav}>
 <ul>
   <li><NavLink to="/profile" className={classes.navigation} activeClassName={classes.active}>Профиль</NavLink></li>
   <li><NavLink to="/news" className={classes.navigation}>Новости</NavLink></li>
-  {/*<li><NavLink to="/dialogs" className={classes.navigation} activeClassName={classes.active}>Сообщения</NavLink></li>*/}
+  <li><NavLink to="/dialogs" className={classes.navigation} activeClassName={classes.active}>Сообщения</NavLink></li>
   <li><NavLink to="" className={classes.navigation}>Документы</NavLink></li>
   <li><NavLink to="" className={classes.navigation}>Информация</NavLink></li>
   <li><NavLink to="/users" className={classes.navigation}>Пользователи</NavLink></li>
 </ul>
-  <BestFriends bestFriends={this.props.bestFriends} />
+  <BestFriendsWithRouter bestFriends={this.props.bestFriends} />
 </nav>)}}
 export default Navigation;

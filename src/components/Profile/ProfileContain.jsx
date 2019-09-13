@@ -4,7 +4,6 @@ import Profile from './Profile'
 import {setUserProfile} from '../../redux/profile-reducer'
 import {connect} from 'react-redux'
 import {setUserProfileThunk} from '../../redux/profile-reducer'
-import {Redirect} from 'react-router-dom'
 import withAuthRedirect from '../../hoc/withAuthRedirect'
 import {compose} from 'redux'
 import {getUserStatusThunk,updateStatusThunk} from '../../redux/profile-reducer'
@@ -22,13 +21,13 @@ class ProfileContain extends React.Component {
             this.props.getUserStatusThunk(userId)
     }
     render() {
-        return <Profile store={this.props.store} profile={this.props.profile} status={this.props.status} updateStatusThunk={this.props.updateStatusThunk}/>
+        return <Profile profile={this.props.profile} status={this.props.status} updateStatusThunk={this.props.updateStatusThunk}/>
     }
 }
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
-    autorizedUserId: state.auth.id
-})
+    autorizedUserId: state.auth.id,
+    })
 
 export default compose(connect(mapStateToProps,{setUserProfile,getUserStatusThunk,updateStatusThunk,setUserProfileThunk}),withRouter,withAuthRedirect)(ProfileContain);

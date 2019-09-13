@@ -21,7 +21,7 @@ const AddNewPostReduxForm = reduxForm({form: 'addNewPostForm'})(AddNewPostForm)
 const Posts = (props) => {
     let postsElements = props.postsData.map( post=> {
         return(
-        <Post name='Boris' message={post.message} />)
+        <Post name={props.userName} message={post.message} />)
     })
     let onAddPost = (values) => {
         props.addPost(values.sendNewPostTextAreaValue)

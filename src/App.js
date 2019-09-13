@@ -30,11 +30,11 @@ class App extends React.Component{
   return (
     <div className="app-wrapper">
       <HeaderAPIComponent />
-      <NavigationContain store={this.props.store} />
+      <NavigationContain />
       <LatestComments />
         <div className='content'>
         <Route path='/news' render={ ()=> <NewsListContain /> } /> 
-        <Route path='/profile/:userId?' render={ ()=> <ProfileContain store={this.props.store} /> } />
+        <Route path='/profile/:userId?' render={ ()=> <ProfileContain /> } />
         <Route path='/dialogs' render={ ()=> <DialogsContain /> } />
         <Route path='/users' render={ ()=> <UsersContain /> } />
         <Route path='/login' render={ ()=> <LoginContain/> } />
