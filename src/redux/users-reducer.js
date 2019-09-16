@@ -14,11 +14,12 @@ const SET_CURRENT_WATCHING_USER_PROFILE = "user-reducer/SET_CURRENT_WATCHING_USE
 let initialUsers = {
         users:[],
         firstThreeUsers: [],
-        pageSize: 2,
+        pageSize: 3,
         totalUsersCount: 0,
-        currentPage: 1,
+        currentPage: 4,
         isFetching: false,
         followingInProgress: [],
+        displayingUsers: 10,
         currentWatchingUserProfileID: undefined
 }
 
@@ -99,7 +100,8 @@ export const getUsers = (currentPage,pageSize) => {
             let data = await usersAPI.getUsers(currentPage,pageSize)
             dispatch(setIsFetching(false))
             dispatch(setUsers(data.items))
-            data.totalCount>100?dispatch(setTotalUsers(55)):dispatch(setTotalUsers(data.totalCount))
+            data.totalCount>100?dispatch(setTotalUsers(30)):dispatch(setTotalUsers(data.totalCount))
+            console.log(data.items)
 }}
 export const getFirstThreeUsers = () => {
     return async (dispatch) => {

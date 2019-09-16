@@ -1,0 +1,17 @@
+.activePage {
+    color: white;
+}
+.button_showMore {
+    padding: 1em;
+    margin: 0 auto;
+}
+.pagination {
+    margin-left: 10px;
+}
+.button {
+    box-sizing: border-box;
+    align-self: center;
+    height: 2em;
+    border-radius: .5em;
+    background-image: radial-gradient(pink,aqua)
+}
