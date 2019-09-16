@@ -7,12 +7,7 @@ import {connect} from "react-redux"
 import {setCurrentWatcingUserProfile} from "../../redux/users-reducer"
 
 class BestFriends extends React.Component {
-      shouldComponentUpdate(nextProps, nextState) {
-            console.log(nextProps, nextState);
-            console.log(this.props, this.state);
-        
-            return true;  
-          }
+
     render(){
     return (
     <div className={style.bestfriends}>

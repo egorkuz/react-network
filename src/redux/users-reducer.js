@@ -16,7 +16,7 @@ let initialUsers = {
         firstThreeUsers: [],
         pageSize: 3,
         totalUsersCount: 0,
-        currentPage: 4,
+        currentPage: 1,
         isFetching: false,
         followingInProgress: [],
         displayingUsers: 10,
@@ -100,7 +100,7 @@ export const getUsers = (currentPage,pageSize) => {
             let data = await usersAPI.getUsers(currentPage,pageSize)
             dispatch(setIsFetching(false))
             dispatch(setUsers(data.items))
-            data.totalCount>100?dispatch(setTotalUsers(30)):dispatch(setTotalUsers(data.totalCount))
+            data.totalCount>100?dispatch(setTotalUsers(100)):dispatch(setTotalUsers(data.totalCount))
             console.log(data.items)
 }}
 export const getFirstThreeUsers = () => {

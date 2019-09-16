@@ -17,7 +17,6 @@ export const usersAPI = {
     },
     getFirstThreeUsers() {
         return instance.get(`users?page=1&count=3`).then(res=>{
-            console.log(res.data)
             return res.data})
     },
     followUser(id) {
