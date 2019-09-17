@@ -19,7 +19,8 @@ const Pagination = (props) => {
                           props.onPageChanged(leftBorder+1)
                           }} className={style.button}>Назад</button>:null}
     {pages.slice(leftBorder-1,rightBorder).map(page=><span onClick={(e)=>{props.onPageChanged(page)}} className={props.currentPage===page&&style.activePage}>{`${page} `}</span>)}
-    {pagesPart<numberOfParts?<button onClick={()=>{setLeftBorder(rightBorder+1) 
+    {pagesPart<numberOfParts?<button onClick={()=>{
+                          setLeftBorder(rightBorder+1) 
                           setRightBorder(rightBorder+props.displayingElelements)
                           setPagesPart(pagesPart+1)
                           props.onPageChanged(rightBorder+1)
