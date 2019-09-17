@@ -21,7 +21,7 @@ class ProfileContain extends React.Component {
             this.props.getUserStatusThunk(userId)
     }
     render() {
-        return <Profile profile={this.props.profile} status={this.props.status} updateStatusThunk={this.props.updateStatusThunk}/>
+        return <Profile profile={this.props.profile} status={this.props.status} updateStatusThunk={this.props.updateStatusThunk} autorizedUserId={this.props.autorizedUserId}/>
     }
 }
 let mapStateToProps = (state) => ({
