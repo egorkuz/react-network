@@ -2,10 +2,11 @@ import React from 'react';
 import styles from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader/Preloader'
 import Status from './Status/StatusWithHooks'
+import {withRouter} from 'react-router-dom'
 
 class ProfileInfo extends React.Component {
     render(){
-    console.log(this.props.profile)
+    console.log(this.props)
     if (!this.props.profile) {
         return <Preloader />
     }
@@ -19,5 +20,8 @@ class ProfileInfo extends React.Component {
             {this.props.profile.lookingForAJob?<p>Ищу работу с зп от 10k$/mon.</p>:null}   
         </section>
     )
-    }}
-export default ProfileInfo
+}}
+
+const ProfileInfoWithRouter = withRouter(ProfileInfo)
+
+export default ProfileInfoWithRouter

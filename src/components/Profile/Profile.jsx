@@ -1,7 +1,7 @@
 import React from 'react';
 import PostsContain from './Posts/PostsContain'
-import ProfileInfo from './ProfileInfo/ProfileInfo'
-import classes from './Profile.module.css';
+import ProfileInfoWithRouter from './ProfileInfo/ProfileInfo'
+import style from './Profile.module.css';
 
 const Profile = React.memo(props => {
     /*
@@ -11,9 +11,9 @@ const Profile = React.memo(props => {
     }*/
     return (
     <div>
-    <div className={classes.profile__hero}></div>
-        <ProfileInfo status = {props.status} profile={props.profile} updateStatusThunk={props.updateStatusThunk} autorizedUserId={props.autorizedUserId}/>
-        <PostsContain userName={props.userName}/>
+     <div className={style.profile__hero}></div>
+        <ProfileInfoWithRouter currentProfile={props.currentProfile} status = {props.status} profile={props.profile} updateStatusThunk={props.updateStatusThunk} autorizedUserId={props.autorizedUserId}/>
+        {props.userId==props.autorizedUserId?<PostsContain userName={props.userName}/>:null}
     </div>)})
 
 export default Profile;

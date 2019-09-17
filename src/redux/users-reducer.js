@@ -9,7 +9,7 @@ const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 const SET_IS_FETCHING = 'SET_IS_FETCHING'
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS'
 const SET_FIRST_THREE_USERS = "users-reducer/SET_FIRST_THREE_USERS"
-const SET_CURRENT_WATCHING_USER_PROFILE = "user-reducer/SET_CURRENT_WATCHING_USER_PROFILE"
+const SET_CURRENT_PROFILE = "user-reducer/SET_CURRENT_PROFILE"
 
 let initialUsers = {
         users:[],
@@ -20,7 +20,7 @@ let initialUsers = {
         isFetching: false,
         followingInProgress: [],
         displayingUsers: 10,
-        currentWatchingUserProfileID: undefined
+        currentProfile: undefined,
 }
 
 export const usersReducer = (state = initialUsers,action) => {
@@ -82,10 +82,10 @@ export const usersReducer = (state = initialUsers,action) => {
                 firstThreeUsers: action.firstThreeUsers
             }
         }
-        case SET_CURRENT_WATCHING_USER_PROFILE: {
+        case SET_CURRENT_PROFILE: {
             return {
                 ...state,
-                currentWatcingUserProfileID: action.currentWatcingUserProfileID
+                currentProfile: action.currentProfile
             }
         }
         default:
@@ -146,6 +146,6 @@ export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page})
 export const setTotalUsers = (totalUsers) => ({type: SET_TOTAL_USERS_COUNT,totalUsers})
 export const setIsFetching = (isFetching) => ({type: SET_IS_FETCHING,isFetching})
 export const toggleFollowingInProgress = (isFetching,userID) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS,isFetching,userID})
-export const setCurrentWatcingUserProfile = (currentWatcingUserProfileID) => ({type: SET_CURRENT_WATCHING_USER_PROFILE,currentWatcingUserProfileID})
+export const setCurrentProfile = (currentProfile) => ({type: SET_CURRENT_PROFILE,currentProfile})
 
 export default usersReducer;
