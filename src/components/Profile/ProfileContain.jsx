@@ -7,14 +7,12 @@ import {setUserProfileThunk} from '../../redux/profile-reducer'
 import withAuthRedirect from '../../hoc/withAuthRedirect'
 import {compose} from 'redux'
 import {getUserStatusThunk,updateStatusThunk} from '../../redux/profile-reducer'
-import Preloader from '../common/Preloader/Preloader'
-
 
 class ProfileContain extends React.Component {
-    
+
     componentDidMount() {
-            let userId = this.props.match.params.userId
-            if (!userId) {
+        let userId=this.props.match.params.userId
+            if (userId===undefined) {
                 userId=this.props.autorizedUserId
                 if(!userId) {
                     this.props.history.push('/login')
@@ -24,11 +22,8 @@ class ProfileContain extends React.Component {
             this.props.getUserStatusThunk(userId)
             
     }
-    componentWillUpdate() {
-        
-    }
     render() {
-        return <Profile userId={this.props.match.params.userId} profile={this.props.profile} status={this.props.status} updateStatusThunk={this.props.updateStatusThunk} currentProfile={this.props.currentProfile} autorizedUserId={this.props.autorizedUserId}/> 
+        return <Profile setUserProfileThunk={this.props.setUserProfileThunk} userId={this.props.match.params.userId} profile={this.props.profile} status={this.props.status} updateStatusThunk={this.props.updateStatusThunk} currentProfile={this.props.currentProfile} autorizedUserId={this.props.autorizedUserId}/> 
         
     }
 }

@@ -13,7 +13,7 @@ const Profile = (props) => {
     return (
     <div>
      <div className={style.profile__hero}></div>
-        <ProfileInfoWithRouter currentProfile={props.currentProfile} status = {props.status} profile={props.profile} updateStatusThunk={props.updateStatusThunk} autorizedUserId={props.autorizedUserId}/>
+        <ProfileInfoWithRouter userId={props.userId} currentProfile={props.currentProfile} status = {props.status} profile={props.profile} updateStatusThunk={props.updateStatusThunk} autorizedUserId={props.autorizedUserId}/>
         {props.userId==props.autorizedUserId||props.userId==undefined?<PostsContain userName={props.userName}/>:null}
     </div>)}
 
