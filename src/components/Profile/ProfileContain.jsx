@@ -12,7 +12,7 @@ class ProfileContain extends React.Component {
 
     componentDidMount() {
         let userId=this.props.match.params.userId
-            if (userId===undefined) {
+            if (!userId) {
                 userId=this.props.autorizedUserId
                 if(!userId) {
                     this.props.history.push('/login')

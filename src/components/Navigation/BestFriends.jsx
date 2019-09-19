@@ -4,7 +4,6 @@ import Preloader from './../common/Preloader/Preloader'
 import {NavLink} from 'react-router-dom';
 import {withRouter} from "react-router";
 import {connect} from "react-redux"
-import {setCurrentProfile} from '../../redux/users-reducer'
 import {getUserStatusThunk, setUserProfileThunk} from "../../redux/profile-reducer"
 
 const BestFriends = (props) => {
