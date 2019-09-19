@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import HeaderAPIComponent from "./components/Header/HeaderContain"
 import NavigationContain from './components/Navigation/NavigationContain';
-import DialogsContain from './components/Dialogs/DialogsContain';
+//import DialogsContain from './components/Dialogs/DialogsContain';
 import UsersContain from './components/Users/UsersContain'
 import {Route} from 'react-router-dom'
 import ProfileContain from './components/Profile/ProfileContain';
@@ -15,6 +15,7 @@ import LatestComments from "./components/Sidebar/LatestComments"
 import Preloader from './components/common/Preloader/Preloader'
 import {initializedApp} from './redux/app-reducer'
 import NewsListContain from './components/News/NewsListContain'
+const DialogsContain = React.lazy(() => import("./components/Dialogs/DialogsContain"))
 
 class App extends React.Component{
     componentDidMount() {
@@ -35,7 +36,10 @@ class App extends React.Component{
         <div className='content'>
         <Route path='/news' render={ ()=> <NewsListContain /> } /> 
         <Route path='/profile/:userId?' render={ ()=> <ProfileContain /> } />
-        <Route path='/dialogs' render={ ()=> <DialogsContain /> } />
+        <Route path='/dialogs' render={ ()=> {return (<React.Suspense fallback={<div>Loading...</div>}>
+          <DialogsContain />
+        </React.Suspense>)
+        }} />
         <Route path='/users' render={ ()=> <UsersContain /> } />
         <Route path='/login' render={ ()=> <LoginContain/> } />
       </div>
