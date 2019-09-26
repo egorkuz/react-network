@@ -9,8 +9,7 @@ import {compose} from 'redux'
 import {getUserStatusThunk,updateStatusThunk} from '../../redux/profile-reducer'
 
 class ProfileContain extends React.Component {
-
-    componentDidMount() {
+    profileRender() {
         let userId=this.props.match.params.userId
             if (!userId) {
                 userId=this.props.autorizedUserId
@@ -20,11 +19,24 @@ class ProfileContain extends React.Component {
             }
             this.props.setUserProfileThunk(userId)
             this.props.getUserStatusThunk(userId)
+    }
+    componentDidMount() {
+        this.profileRender()
             
     }
+    componentDidUpdate(prevProps,prevState) {
+        if(this.props.match.params.userId!==prevProps.match.params.userId)
+        this.profileRender()
+    }
     render() {
-        return <Profile setUserProfileThunk={this.props.setUserProfileThunk} userId={this.props.match.params.userId} profile={this.props.profile} status={this.props.status} updateStatusThunk={this.props.updateStatusThunk} currentProfile={this.props.currentProfile} autorizedUserId={this.props.autorizedUserId}/> 
-        
+        return <Profile 
+        setUserProfileThunk={this.props.setUserProfileThunk} 
+        userId={this.props.match.params.userId} 
+        profile={this.props.profile} status={this.props.status} 
+        updateStatusThunk={this.props.updateStatusThunk} 
+        currentProfile={this.props.currentProfile} 
+        autorizedUserId={this.props.autorizedUserId} 
+        autorizedUserProfile={!this.props.match.params.userId}/>
     }
 }
 let mapStateToProps = (state) => ({

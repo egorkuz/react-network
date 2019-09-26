@@ -5,3 +5,6 @@
 .profileInfo__avatar {
     width: 10%;
 }
+.profileInfo__uploadAvatar {
+    display: block;
+}
