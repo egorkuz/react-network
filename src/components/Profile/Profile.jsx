@@ -17,7 +17,9 @@ const Profile = (props) => {
         status = {props.status} profile={props.profile} 
         updateStatusThunk={props.updateStatusThunk} 
         autorizedUserId={props.autorizedUserId} 
-        autorizedUserProfile={props.autorizedUserProfile}/>
+        autorizedUserProfile={props.autorizedUserProfile}
+        uploadPhoto={props.uploadPhoto}
+        />
         {props.userId==props.autorizedUserId||props.userId==undefined?<PostsContain userName={props.userName}/>:null}
     </div>)}
 

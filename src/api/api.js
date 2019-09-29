@@ -1,4 +1,5 @@
 import * as axios from 'axios'
+import { savePhoto } from '../redux/profile-reducer'
 
 const instance = axios.create(
     {
@@ -41,6 +42,15 @@ export const profileAPI = {
     updateStatus(status) {
         return instance.put(`profile/status`,{
             status: status
+        })
+    },
+    uploadPhoto(imageFile){
+        const formData = new FormData()
+        formData.append("image",imageFile)
+        return instance.put(`profile/photo`,formData,{
+            header: {
+                'Content-Type': 'multipart/form-data'
+            }
         })
     }
 }

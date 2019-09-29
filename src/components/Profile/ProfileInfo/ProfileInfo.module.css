@@ -5,6 +5,10 @@
 .profileInfo__avatar {
     width: 10%;
 }
-.profileInfo__uploadAvatar {
+.profileInfo__uploadAvatar, .profileInfo__editMode {
     display: block;
+    margin-bottom: .1em
+}
+.profileInfoEditMode__input {
+    margin-left: -1em
 }

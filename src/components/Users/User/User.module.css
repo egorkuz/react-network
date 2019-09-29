@@ -3,8 +3,11 @@
     width: 50%;
     flex-direction: row;
     background-color: white;
+    border-radius: .08em;
     margin: 10px;
+    margin-right: 0;
 }
+
 .user__image {
     display: flex;
     flex-direction: column;
@@ -20,6 +23,14 @@
 .user__body {
     flex: 5;
     padding: .5em;
+    width: 60%;
+    white-space: pre-wrap;
+}
+.user__status {
+    width: 10em;
+    height: max-content;
+    word-wrap: break-word;
+    white-space: normal;
 }
 .button {
     box-sizing: border-box;

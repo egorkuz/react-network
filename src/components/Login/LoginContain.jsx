@@ -10,7 +10,6 @@ import {Redirect} from 'react-router-dom'
 let maxLengthCreatorValidate = maxLengthCreator(40)
 
 const LoginForm = (handleSubmit,error) => {
-    console.log(error)
         return (
             <Form className={style.loginForm} onSubmit={handleSubmit}>
             <div>

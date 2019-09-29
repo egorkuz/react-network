@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './ValidationForms.module.css'
 import {reduxForm, Field, Form} from 'redux-form'
 
-export const Textarea = ({input,meta,child,...props}) => {
+    export const Textarea = ({input,meta,child,...props}) => {
     {if (meta.touched && meta.error==="Required")
     {return <div className={styles.textarea + ' ' + styles.textarea_zeroValueError}>
     <textarea {...input}{...props} />
@@ -17,10 +17,7 @@ export const Textarea = ({input,meta,child,...props}) => {
     </div>}
     }  
 }
-
-
-
-    export const Input = ({input,meta,...props}) => {
+        export const Input = ({input,meta,...props}) => {
         {if (meta.touched && meta.error==="Required")
         {return <div className={styles.textarea + ' ' + styles.textarea_zeroValueError}>
         <input  {...input} {...props}/>
@@ -32,9 +29,15 @@ export const Textarea = ({input,meta,child,...props}) => {
          }
         else {return <div className={styles.textarea}>
         <input  {...input} {...props}/>
-        </div>}
-        }  
-    }
-export const CreateField = (required,placeholder,name,component) => {
-    return <Field validate={required} placeholder={'login'} name={"email"} component={Input}/>
+        </div>}}}
+
+export const CreateField = (validator,placeholder,name,component,className,props={},text="") => {
+    return <div className={className}>
+    <Field 
+    validate={validator} 
+    placeholder={placeholder} 
+    name={name} 
+    component={component}
+    />{text}
+    </div>
 }

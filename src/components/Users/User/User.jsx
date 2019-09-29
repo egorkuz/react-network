@@ -26,7 +26,7 @@ const User = (props) => {
         <span>LA, </span>
         <span>USA</span>
         <p>{props.userData.id}</p>
-        <p>{props.userData.status}</p>
+        <p className={styles.user__status}>{props.userData.status}</p>
     </div>
     </section>
     )
