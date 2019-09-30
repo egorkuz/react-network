@@ -1,8 +1,6 @@
 .textarea {
     font-size: 13.3333px;
-    width: 50%;
-    margin-top: .5em;
-    margin-left: 1em;
+    margin: 0;
     border: 1px solid blue;
     border-radius: .3em;
   }
@@ -16,5 +14,5 @@
       content: "Введите как минимум 1 символ"
   }
   .textarea_maxLengthError::after {
-      content: "Максимальная длинна сообщения 40 символов"
+      content: "Превышено максимальное количество символов"
   }

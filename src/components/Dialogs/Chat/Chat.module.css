@@ -3,14 +3,8 @@
     height: auto;
     padding-right: 1em;
     padding-left: 1em;
-    background-color: bisque;
-}
-/*.posts__textarea {
-    width: 50%;
-    margin-top: .5em;
-    margin-left: 1em;
-    border-radius: .3em;
-  }*/
+    background-color: lightcyan; 
+  }
   .send {
     display: block;
     margin-left: 1em;

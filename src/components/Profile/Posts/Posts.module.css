@@ -1,6 +1,11 @@
-
+  .newPostTextarea {
+    width: 50%;
+    margin: 1em 0 2em 1em;
+  }
   .send {
     display: block;
-    margin-left: 1em;
+      border-radius: .5em;
+      margin-left: -.2em;
+      background-image: radial-gradient(lightpink,lightskyblue);
     padding: 1em;
   }

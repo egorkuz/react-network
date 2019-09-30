@@ -8,8 +8,8 @@ import {Textarea} from '../../../components/common/ValidationForms/ValidationFor
 let maxLengthCreatorValidate = maxLengthCreator(40)
 
 const AddNewPostForm = (props) => {
-    return  <Form onSubmit={props.handleSubmit}>
-                <Field rows='8' validate={[required,maxLengthCreatorValidate]} className={classes.posts__textarea} className={classes.posts__textarea} placeholder={props.newPostText} name={"sendNewPostTextAreaValue"} component={Textarea}/>
+    return  <Form onSubmit={props.handleSubmit} className={classes.newPostTextarea}>
+                <Field rows='8' validate={[required,maxLengthCreatorValidate]} className={classes.posts__textarea} placeholder={props.newPostText} name={"sendNewPostTextAreaValue"} component={Textarea}/>
 
                 <button className={classes.send}>Новый пост</button>
             </Form>
