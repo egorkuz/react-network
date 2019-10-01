@@ -41,7 +41,6 @@ export const usersReducer = (state = initialUsers,action) => {
                 return {
                     ...state,
                     users: state.users.map(u=>{
-                        console.log(u)
                         if (u.id===action.userID){
                             return ({...u, followed: false})
                         }

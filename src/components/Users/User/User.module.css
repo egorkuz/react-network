@@ -19,6 +19,7 @@
 }
 .user__image__avatar {
     height: inherit;
+    margin: initial;
 }
 .user__body {
     flex: 5;

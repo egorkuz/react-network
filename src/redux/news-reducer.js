@@ -1,8 +1,7 @@
-const GET_NEWS = 'users-reducer/GET_NEWS';
-const WRITE_COMMENTARY_FOR_NEWS = 'news-reducer/WRITE_COMMENTARY_FOR_NEWS'
+const ADD_COMMENTARY_FOR_NEWS = 'news-reducer/WRITE_COMMENTARY_FOR_NEWS'
+
 
 let initialNewsPage = {
-
     newsData: [
         {newsId: 1, 
         newsName: "Новый особняк стоимостью 25 млн$ был построен на 25 линии СНТ Дружба",
@@ -24,29 +23,23 @@ let initialNewsPage = {
     ],
     
 }
+
 const newsReducer = (state=initialNewsPage,action) => {
     switch(action.type) { 
-        case WRITE_COMMENTARY_FOR_NEWS: 
-            let newCommentary = {
-            newsId: action.newsId,
-            user: "Дядя",
-            message: action.newCommentaryTextValue
-            }
+        case ADD_COMMENTARY_FOR_NEWS:
+            let commentedNews=state.newsData.filter(news=>news.newsId==action.newsId)[0]
+            commentedNews.commentaries.push(action.newCommentaryTextValue)
             return (
                 { 
                 ...state,
                 newsData: [...state.newsData]
-            
-            }
-            )
+
+                
+        })
         default: {
             return state}}}
 
 
-export const getNews = (news) => {
-    return null
-}
-
-
+export const addCommentaryForNews = (newsId,newCommentaryTextValue) => ({type: ADD_COMMENTARY_FOR_NEWS, newsId, newCommentaryTextValue})
 
 export default newsReducer

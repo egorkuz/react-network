@@ -2,10 +2,10 @@ import React from "react"
 import style from "./NewsList.module.css"
 import News from "./News/News"
 import {connect} from 'react-redux'
-import getNews from "../../redux/news-reducer"
+import {addCommentaryForNews} from '../../redux/news-reducer'
 
-const NewsList = ({newsList}) => {
-    let newsListToRender = newsList.map(newsData=><News newsDataToNewsComponent={newsData} />)
+const NewsList = ({newsList,addCommentaryForNews}) => {
+    let newsListToRender = newsList.map(newsData=><News addCommentaryForNews={addCommentaryForNews} newsDataToNewsComponent={newsData} />)
     return (
         <section>
             {newsListToRender}
@@ -18,7 +18,6 @@ let mapStateToProps = (state) => {
     }
     
 }
-
-const NewsListContain = connect(mapStateToProps,{getNews})(NewsList)
+const NewsListContain = connect(mapStateToProps,{addCommentaryForNews})(NewsList)
 
 export default NewsListContain
