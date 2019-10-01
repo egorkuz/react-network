@@ -20,7 +20,6 @@ const News = (props) => {
     let onAddCommentary = (values) => {
         props.addCommentaryForNews(props.newsDataToNewsComponent.newsId,values.newsСommentaryText)
     }
-    console.log(props)
     return (
         <div className={style.news} key={props.newsDataToNewsComponent.newsId}>
         <h3 className={style.news__name}>{props.newsDataToNewsComponent.newsName}</h3>
