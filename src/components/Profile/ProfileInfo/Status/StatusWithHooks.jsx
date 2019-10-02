@@ -10,7 +10,6 @@ const Status = (props) => {
        //useEffect works after page render
        //hooks dont use in if else construction and cycles
        useEffect(()=>{
-        debugger
        setStatus(props.status)
        },[props.status])
        const activateEditMode = () => 

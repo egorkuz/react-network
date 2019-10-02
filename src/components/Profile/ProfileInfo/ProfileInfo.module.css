@@ -10,5 +10,9 @@
     margin-bottom: .1em
 }
 .profileInfoEditMode__input {
-    margin-left: -1em
+    width: 20%;
+}
+.profileInfoEditMode__checkbox {
+    width: 5%;
+    border: none;
 }

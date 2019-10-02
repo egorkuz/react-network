@@ -9,11 +9,20 @@ const ProfileInfo = (props) => {
     const onAvatarUploading = (e) => {
         if(e.target.files.length) {props.uploadPhoto(e.target.files[0])}
     }
+    const onSubmit = (formData) => {
+        props.saveProfileChanges(Object.defineProperty(formData, 'lookingForAJobDescription', {
+            value: "no",
+            writable: true,
+            enumerable: true,
+            configurable: true
+          }))
+        setEditMode(false)
+    }
     if(!props.profile){return <Preloader />}
     
     return (
         <section className={style.profileInfo}>
-            {editMode?<ProfileInfoEditModeReduxForm {...props} />:<ProfileInfoViewMode {...props} switchToEditMode={()=>{setEditMode(true)}} onAvatarUploading={onAvatarUploading}/>}  
+            {editMode?<ProfileInfoEditModeReduxForm initialValues={props.profile} SwitchToViewMode={()=>{setEditMode(false)}} onSubmit={onSubmit} {...props} />:<ProfileInfoViewMode {...props} switchToEditMode={()=>{setEditMode(true)}} onAvatarUploading={onAvatarUploading}/>}  
         </section>
     )
 }
@@ -32,8 +41,9 @@ const ProfileInfoViewMode = (props) => {
             <p><b>Имя:</b> {props.profile.fullName}</p>
             <p><b>Город:</b> LA, USA</p>
             <p><b>Возраст:</b> 18 лет</p>
+            <p><b>Обо мне: </b>{props.profile.aboutMe}</p>
+            <p><b>Место работы: </b></p>{props.profile.lookingForAJob?<p>Ищу работу с зп от 10k$/mon.</p>:<span>"HOLLYWOOD"</span>}
             <p><b>Контакты: </b></p>
-            {props.profile.lookingForAJob?<p>Ищу работу с зп от 10k$/mon.</p>:null}
             {Object.keys(props.profile.contacts).map((key,index)=>{return <Contact key={key} contactTitle={key} contactValue={props.profile.contacts[index]}/>})}
             </>
             )

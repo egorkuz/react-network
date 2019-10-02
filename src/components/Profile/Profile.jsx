@@ -19,6 +19,7 @@ const Profile = (props) => {
         autorizedUserId={props.autorizedUserId} 
         autorizedUserProfile={props.autorizedUserProfile}
         uploadPhoto={props.uploadPhoto}
+        saveProfileChanges={props.saveProfileChanges}
         />
         {props.userId==props.autorizedUserId||props.userId==undefined?<PostsContain userName={props.userName}/>:null}
     </div>)}

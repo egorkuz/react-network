@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 import {setUserProfileThunk} from '../../redux/profile-reducer'
 import withAuthRedirect from '../../hoc/withAuthRedirect'
 import {compose} from 'redux'
-import {getUserStatusThunk,updateStatusThunk,uploadPhoto} from '../../redux/profile-reducer'
+import {getUserStatusThunk,updateStatusThunk,uploadPhoto,saveProfileChanges} from '../../redux/profile-reducer'
 
 class ProfileContain extends React.Component {
     profileRender() {
@@ -37,7 +37,8 @@ class ProfileContain extends React.Component {
         currentProfile={this.props.currentProfile} 
         autorizedUserId={this.props.autorizedUserId} 
         autorizedUserProfile={!this.props.match.params.userId}
-        uploadPhoto={this.props.uploadPhoto}/>
+        uploadPhoto={this.props.uploadPhoto}
+        saveProfileChanges={this.props.saveProfileChanges}/>
     }
 }
 let mapStateToProps = (state) => ({
@@ -47,4 +48,4 @@ let mapStateToProps = (state) => ({
     currentProfile: state.usersPage.currentProfile
     })
 
-export default compose(connect(mapStateToProps,{setUserProfile,getUserStatusThunk,updateStatusThunk,setUserProfileThunk,uploadPhoto}),withRouter,withAuthRedirect)(ProfileContain);
+export default compose(connect(mapStateToProps,{setUserProfile,getUserStatusThunk,updateStatusThunk,setUserProfileThunk,uploadPhoto,saveProfileChanges}),withRouter,withAuthRedirect)(ProfileContain);

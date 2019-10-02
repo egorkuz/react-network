@@ -95,4 +95,11 @@ export const uploadPhoto = (file) => async (dispatch) => {
         dispatch(savePhotoSucess(res.data.data.photos))
     }
 }
+export const saveProfileChanges = (formData) => async (dispatch,getState) => {
+    const userId = getState().auth.id
+    let res = await profileAPI.saveProfileChanges(formData);
+        if(res.data.resultCode===0) {
+            dispatch(setUserProfileThunk(userId))
+        }
+}
 export default profileReducer;
