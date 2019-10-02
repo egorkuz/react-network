@@ -100,7 +100,6 @@ export const getUsers = (currentPage,pageSize) => {
             dispatch(setIsFetching(false))
             dispatch(setUsers(data.items))
             data.totalCount>100?dispatch(setTotalUsers(100)):dispatch(setTotalUsers(data.totalCount))
-            console.log(data.items)
 }}
 export const getFirstThreeUsers = () => {
     return async (dispatch) => {
