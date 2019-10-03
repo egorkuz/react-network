@@ -34,13 +34,24 @@
     margin-bottom: .4em;
 }
 .news__likeAndCommentaryPanel {
+    display: flex;
+    align-items: center;
     margin-left: .5em;
 }
-.news__likeAndCommentaryPanel__commentarySign {
+.news__likeAndCommentaryPanel__commentarySign, .news__likeAndCommentaryPanel__likeSign {
     width: 4em;
-    transition: 0.3s ease;
+    transition: 0.15s ease;
+    display: inline-block;
 }
-.news__likeAndCommentaryPanel__commentarySign:hover {
+.news__likeAndCommentaryPanel__likeSign {
+    margin-bottom: 0;
+}
+.likeAndCommentaryPanel__likeSign {
+    margin-bottom: 0;
+    font-size: 1.7em;
+    color: lightsalmon;
+}
+.news__likeAndCommentaryPanel__commentarySign:hover, .news__likeAndCommentaryPanel__likeSign:hover {
     transform: scale(1.05)
 }
 /*@media (min-width: 1200px) {

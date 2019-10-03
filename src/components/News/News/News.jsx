@@ -12,8 +12,8 @@ let maxLengthCreatorValidate = maxLengthCreator(40)
 
 const AddNewsCommentaryForm = (props) => {
     return  <Form  onSubmit={props.handleSubmit} className={style.news__commentary}>
-                <Field  autoFocus rows='8' validate={[required,maxLengthCreatorValidate]} name={`news${props.newsId}СommentaryText`} component={Textarea}/>
-                <button className={style.button}>Комментировать</button>
+                <Field   rows='8' validate={[required,maxLengthCreatorValidate]} name={`news${props.newsId}СommentaryText`} component={Textarea}/>
+                <button autoFocus className={style.button}>Комментировать</button>
             </Form>
 }
 
@@ -26,6 +26,7 @@ const News = (props) => {
         switchToCommentaryMode(false)
     } 
     const[addCommentaryMode,switchToCommentaryMode] = useState(false)
+    const[likesCount,likesCountIncrease] = useState(0)
     console.log(addCommentaryMode)
     return (
         <div className={style.news} key={props.newsDataToNewsComponent.newsId}>
@@ -38,10 +39,17 @@ const News = (props) => {
         </div>
         {addCommentaryMode?<AddNewsCommentaryReduxForm onBlur={()=>{
         switchToCommentaryMode(false)
-        }} onSubmit={onAddCommentary} newsId={props.newsDataToNewsComponent.newsId}/>:
-        <CommentarySign className={style.news__likeAndCommentaryPanel__commentarySign} onClick={()=>{switchToCommentaryMode(true)}}/>
+        }} onSubmit={onAddCommentary} onKeyPress={(e)=>{if (e.keyCode==13){onAddCommentary()}}} newsId={props.newsDataToNewsComponent.newsId}/>:
+        <section className={style.news__likeAndCommentaryPanel}>
+        <CommentarySign className={style.news__likeAndCommentaryPanel__commentarySign} 
+                        onClick={()=>{switchToCommentaryMode(true)}}/>
+        <LikeSign onClick={()=>{likesCountIncrease(likesCount+1)}} className={style.news__likeAndCommentaryPanel__likeSign}/>
+        <p className={style.likeAndCommentaryPanel__likeSign}>{likesCount}</p>
+        </section>
         }
+        
         </div>
     )
 }
+
 export default News
