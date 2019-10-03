@@ -33,6 +33,16 @@
 .news__date {
     margin-bottom: .4em;
 }
+.news__likeAndCommentaryPanel {
+    margin-left: .5em;
+}
+.news__likeAndCommentaryPanel__commentarySign {
+    width: 4em;
+    transition: 0.3s ease;
+}
+.news__likeAndCommentaryPanel__commentarySign:hover {
+    transform: scale(1.05)
+}
 /*@media (min-width: 1200px) {
     .news img{
         width: 800px;
