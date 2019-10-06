@@ -9,9 +9,10 @@ import {Redirect} from 'react-router-dom'
 
 let maxLengthCreatorValidate = maxLengthCreator(40)
 
-const LoginForm = (handleSubmit,error) => {
+const LoginForm = (props) => {
+    console.log(props.captchaUrl)
         return (
-            <Form className={style.loginForm} onSubmit={handleSubmit}>
+            <Form className={style.loginForm} onSubmit={props.handleSubmit}>
             <div>
                 <Field validate={[required,maxLengthCreatorValidate]} placeholder={'Логин'} name={"email"} component={Input}/> 
             </div>
@@ -24,7 +25,11 @@ const LoginForm = (handleSubmit,error) => {
             <div>
                 <button type='submit'>Войти</button>
             </div>
-            {Object.keys(error).length != 0 && error&&<span>{`${error}`}</span>}
+            {props.captchaUrl!=null?<img src={props.captchaUrl}/>:null}
+            {props.captchaUrl&& <div>
+                <Field validate={[required,maxLengthCreatorValidate]} type={'input'} name={'captcha'} component={'input'}/>Введите символы
+            </div>}
+            {props.error&&<span>{`${props.error}`}</span>}
         </Form>
         )
     }
@@ -33,7 +38,7 @@ const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
 
 class LoginContain extends React.Component {
     onSubmit = (formData) => {
-        this.props.login(formData.email,formData.password,formData.rememberMe)
+        this.props.login(formData.email,formData.password,formData.rememberMe,formData.captcha)
     }
     render(){
         return(this.props.isAuth?
@@ -41,14 +46,15 @@ class LoginContain extends React.Component {
             :
         <section>
             <h1 className={style.login__name}>Авторизация</h1>
-            <LoginReduxForm onSubmit={this.onSubmit}/>
+            <LoginReduxForm captchaUrl={this.props.captchaUrl} onSubmit={this.onSubmit}/>
             <p className={style.notLogined}>Вы не залогинены</p>
         </section>)
     }
 }
 
 let mapStateToProps = (state) => ({
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
+    captchaUrl: state.auth.captchaUrl
 })
 
 export default connect(mapStateToProps,{login})(LoginContain)

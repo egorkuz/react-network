@@ -7,7 +7,9 @@
 }
 .profileInfo__uploadAvatar, .profileInfo__editMode {
     display: block;
-    margin-bottom: .1em
+    margin-bottom: .3em;
+    border-radius: .5em;
+    background-image: radial-gradient(lightpink,lightskyblue);
 }
 .profileInfoEditMode__input {
     width: 20%;

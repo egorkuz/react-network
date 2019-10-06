@@ -1,4 +1,5 @@
 import usersAPI, {profileAPI} from '../api/api'
+import {stopSubmit} from 'redux-form'
 
 
 const ADD_POST = 'profile-reducer/ADD-POST';
@@ -101,5 +102,10 @@ export const saveProfileChanges = (formData) => async (dispatch,getState) => {
         if(res.data.resultCode===0) {
             dispatch(setUserProfileThunk(userId))
         }
+        /*else {
+            console.log(res.data.messages)
+            let message = res.data.messages[0]
+            dispatch(stopSubmit("ProfileInfoEditMode",{_error: message}))
+        }*/
 }
 export default profileReducer;

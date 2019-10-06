@@ -4,12 +4,11 @@ import HeaderAPIComponent from "./components/Header/HeaderContain"
 import NavigationContain from './components/Navigation/NavigationContain';
 //import DialogsContain from './components/Dialogs/DialogsContain';
 import UsersContain from './components/Users/UsersContain'
-import {Route} from 'react-router-dom'
+import {Route, Switch, withRouter,Redirect} from 'react-router-dom'
 import ProfileContain from './components/Profile/ProfileContain';
 import LoginContain from './components/Login/LoginContain'
 import {connect} from 'react-redux'
 import {setAuthUserDataThunk} from './redux/auth-reducer'
-import {withRouter} from 'react-router-dom'
 import {compose} from 'redux'
 import LatestComments from "./components/Sidebar/LatestComments"
 import Preloader from './components/common/Preloader/Preloader'
@@ -34,6 +33,8 @@ class App extends React.Component{
       <NavigationContain />
       <LatestComments />
         <div className='content'>
+          <Switch>
+         <Redirect from="/" to="/profile/" /> 
         <Route path='/news' render={ ()=> <NewsListContain /> } /> 
         <Route path='/profile/:userId?' render={ ()=> <ProfileContain /> } />
         <Route path='/dialogs' render={ ()=> {return (<React.Suspense fallback={<div>Loading...</div>}>
@@ -42,6 +43,8 @@ class App extends React.Component{
         }} />
         <Route path='/users' render={ ()=> <UsersContain /> } />
         <Route path='/login' render={ ()=> <LoginContain/> } />
+        <Route path='/*' render={ ()=> <div>404 NOT FOUND</div> } />
+        </Switch>
       </div>
       </div>
     )

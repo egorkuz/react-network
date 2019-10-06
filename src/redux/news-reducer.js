@@ -1,6 +1,5 @@
 const ADD_COMMENTARY_FOR_NEWS = 'news-reducer/WRITE_COMMENTARY_FOR_NEWS'
 
-
 let initialNewsPage = {
     newsData: [
         {newsId: 1, 
@@ -13,11 +12,13 @@ let initialNewsPage = {
         {newsId: 2, newsName: "Прощальный костер состоится 25 августа",
         newsImage: "https://www.grekomania.ru/images/places/19/cyclades/santorini/big/88316_Famous-Santorini-sunset-3.jpg",
         date: "28 июля",
+        newsText: "Будет очень весело! Приедут лучшие диджеи мира. Дом переньон и Хенеси икс о за счёт садоводства",
         commentaries: []
     },
         {newsId: 3, newsName: "Дорогое шампанское будет литься рекой на прощальном костре!",
         newsImage: "https://www.grekomania.ru/images/places/19/cyclades/santorini/big/88316_Famous-Santorini-sunset-3.jpg",
         date: "28 июля",
+        newsText: "Будет очень весело! Приедут лучшие диджеи мира. Дом переньон и Хенеси икс о за счёт садоводства",
         commentaries: []  
     },
     ],

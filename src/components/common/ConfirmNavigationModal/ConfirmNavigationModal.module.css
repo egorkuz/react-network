@@ -1,0 +1,25 @@
+.confirmNavigationModalWrap {
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(12,34,56,.5)
+}
+.confirmNavigationModal {
+    text-align: center;
+    width: 50%;
+    height: 20%;
+    position: absolute;
+    right: 25%;
+    left: 25%;
+    top: 25%;
+    bottom: 25%;
+    background-color: white;
+}
+.confirmNavigationModal__inner {
+    height: calc(100% - 4em);
+    margin-top: 2em;
+    margin-bottom: 2em;
+}

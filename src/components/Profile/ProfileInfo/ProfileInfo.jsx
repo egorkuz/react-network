@@ -10,26 +10,28 @@ const ProfileInfo = (props) => {
         if(e.target.files.length) {props.uploadPhoto(e.target.files[0])}
     }
     const onSubmit = (formData) => {
-        props.saveProfileChanges(Object.defineProperty(formData, 'lookingForAJobDescription', {
+        console.log(formData)
+       props.saveProfileChanges(Object.defineProperty(formData, 'lookingForAJobDescription', {
             value: "no",
             writable: true,
             enumerable: true,
             configurable: true
           }))
-        setEditMode(false)
+            setEditMode(false)
     }
     if(!props.profile){return <Preloader />}
     
     return (
         <section className={style.profileInfo}>
-            {editMode?<ProfileInfoEditModeReduxForm initialValues={props.profile} SwitchToViewMode={()=>{setEditMode(false)}} onSubmit={onSubmit} {...props} />:<ProfileInfoViewMode {...props} switchToEditMode={()=>{setEditMode(true)}} onAvatarUploading={onAvatarUploading}/>}  
+            {editMode?<ProfileInfoEditModeReduxForm initialValues={props.profile} switchToViewMode={()=>{setEditMode(false)}} onSubmit={onSubmit} {...props} />:<ProfileInfoViewMode {...props} switchToEditMode={()=>{setEditMode(true)}} onAvatarUploading={onAvatarUploading}/>}  
         </section>
     )
 }
-export const Contact = ({contactTitle,contactValue}) => {
+export const Contact = (props) => {
             return(<div>
-                <em>{`${contactTitle}: `}</em>
-                <span>{contactValue}</span>
+                <em>{`${props.contactTitle}: `}</em>
+                <span>{props.contactValue}</span>
+                {props.error&&<span>{props.error}</span>}
                 </div>)
 }
 const ProfileInfoViewMode = (props) => {
@@ -44,7 +46,7 @@ const ProfileInfoViewMode = (props) => {
             <p><b>Обо мне: </b>{props.profile.aboutMe}</p>
             <p><b>Место работы: </b></p>{props.profile.lookingForAJob?<p>Ищу работу с зп от 10k$/mon.</p>:<span>"HOLLYWOOD"</span>}
             <p><b>Контакты: </b></p>
-            {Object.keys(props.profile.contacts).map((key,index)=>{return <Contact key={key} contactTitle={key} contactValue={props.profile.contacts[index]}/>})}
+            {Object.keys(props.profile.contacts).map((key,index)=>{return <Contact key={key} contactTitle={key} contactValue={props.profile.contacts[`${key}`]}/>})}
             </>
             )
 }
