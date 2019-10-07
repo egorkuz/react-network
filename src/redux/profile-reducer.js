@@ -81,15 +81,18 @@ export const getUserStatusThunk = (userId) => {
     }
 }
 
-export const updateStatusThunk = (status) => {
-    return (dispatch) => {
-        profileAPI.updateStatus(status).then(
-        res => { if(res.data.resultCode===0){
+export const updateStatusThunk = (status) => async (dispatch) => {
+    try {
+        let res = await profileAPI.updateStatus(status)
+        if(res.data.resultCode===0){
             dispatch(setUserStatus(status))
         }}
-        )
+    catch(err) {
+        debugger;
     }
-}
+    }
+
+
 export const uploadPhoto = (file) => async (dispatch) => {
     let res = await profileAPI.uploadPhoto(file);
     if (res.data.resultCode===0){

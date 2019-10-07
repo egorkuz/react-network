@@ -17,9 +17,17 @@ import NewsListContain from './components/News/NewsListContain'
 const DialogsContain = React.lazy(() => import("./components/Dialogs/DialogsContain"))
 
 class App extends React.Component{
+    catchAllUnhandledErrors = (reason,promise) => {
+      console.log('error')
+      console.error()
+    }
     componentDidMount() {
-
       this.props.initializedApp()
+      window.addEventListener("unhandledrejection",
+      this.catchAllUnhandledErrors)
+  }
+  componentWillUnmount() {
+      window.removeEventListener("unhandledrejection",this.catchAllUnhandledErrors)
   }
   render(){
   if (!this.props.initialized) {
@@ -34,7 +42,7 @@ class App extends React.Component{
       <LatestComments />
         <div className='content'>
           <Switch>
-         <Redirect from="/" to="/profile/" /> 
+        <Route exact path='/' render={()=><Redirect to="/profile"/>} />
         <Route path='/news' render={ ()=> <NewsListContain /> } /> 
         <Route path='/profile/:userId?' render={ ()=> <ProfileContain /> } />
         <Route path='/dialogs' render={ ()=> {return (<React.Suspense fallback={<div>Loading...</div>}>
