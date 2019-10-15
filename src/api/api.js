@@ -10,6 +10,9 @@ const instance = axios.create(
         }
     }
 )
+const heroku = axios.create({
+    baseURL: "https://expressrestapi.herokuapp.com/",
+})
 export const usersAPI = {
     getUsers(currentPage=1,pageSize=1) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(res=>
@@ -77,4 +80,9 @@ export const securityAPI = {
         return instance.get(`security/get-captcha-url`).then(res=>res.data)
 }}
 
+export const newsAPI = {
+    getNewsData(newsCount) {
+        return heroku.get(`news?${newsCount}`).then(res=>res.data)
+    }
+}
 export default usersAPI
