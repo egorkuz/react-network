@@ -33,7 +33,7 @@ export const getNewsData = (newsCount=3) => async (dispatch) => {
             let data = await newsAPI.getNewsData(newsCount)
             dispatch(getNewsDataSucess(data))
 }
-export const addCommentaryForNews = (newsId,newCommentaryTextValue) => ({type: ADD_COMMENTARY_FOR_NEWS, newsId, newCommentaryTextValue})
+export const addCommentaryForNews = (refNewsId,newCommentaryTextValue,userId,userName) => ({type: ADD_COMMENTARY_FOR_NEWS, refNewsId, newCommentaryTextValue,userId,userName})
 
 export default newsReducer
 

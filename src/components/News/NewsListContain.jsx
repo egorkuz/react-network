@@ -6,12 +6,12 @@ import {connect} from 'react-redux'
 import {getNewsData,addCommentaryForNews} from '../../redux/news-reducer'
 import Preloader from "../common/Preloader/Preloader"
 
-const NewsList = ({newsList,getNewsData,addCommentaryForNews}) => {
+const NewsList = ({newsList,userId,userName,getNewsData,addCommentaryForNews}) => {
     useEffect(()=>{
         getNewsData()
     })
     let newsListToRender
-    if(newsList){newsListToRender = newsList.map(newsData=><News addCommentaryForNews={addCommentaryForNews} newsDataToNewsComponent={newsData} />)}
+    if(newsList){newsListToRender = newsList.map(newsData=><News userId={userId} userName={userName} addCommentaryForNews={addCommentaryForNews} newsDataToNewsComponent={newsData} />)}
     return (
         newsList?
         <section>
@@ -21,7 +21,9 @@ const NewsList = ({newsList,getNewsData,addCommentaryForNews}) => {
 
 let mapStateToProps = (state) => {
     return {
-        newsList: state.newsPage.newsData
+        newsList: state.newsPage.newsData,
+        userId: state.auth.id,
+        userName: state.auth.login
     }
     
 }

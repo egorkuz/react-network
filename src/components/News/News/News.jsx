@@ -22,12 +22,12 @@ const AddNewsCommentaryReduxForm = reduxForm({form: "addNewsCommentaryReduxForm"
 const News = (props) => {
     
     let onAddCommentary = (values) => {
-        props.addCommentaryForNews(props.newsDataToNewsComponent.newsId,values[`news${props.newsDataToNewsComponent.newsId}СommentaryText`])
+        props.addCommentaryForNews(props.newsDataToNewsComponent._id,values[`news${props.newsDataToNewsComponent.newsId}СommentaryText`],props.userId,props.userName)
         switchToCommentaryMode(false)
     } 
     const[addCommentaryMode,switchToCommentaryMode] = useState(false)
     const[likesCount,likesCountIncrease] = useState(0)
-    console.log(addCommentaryMode)
+
     return (
         <div className={style.news} key={props.newsDataToNewsComponent.newsId}>
         <h3 className={style.news__name}>{props.newsDataToNewsComponent.newsName}</h3>
