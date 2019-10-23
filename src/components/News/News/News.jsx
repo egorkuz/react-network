@@ -22,12 +22,11 @@ const AddNewsCommentaryReduxForm = reduxForm({form: "addNewsCommentaryReduxForm"
 const News = (props) => {
     
     let onAddCommentary = (values) => {
-        props.addCommentaryForNews(props.newsDataToNewsComponent._id,values[`news${props.newsDataToNewsComponent.newsId}СommentaryText`],props.userId,props.userName)
+        props.addCommentaryForNews(props.newsDataToNewsComponent._id,props.newsDataToNewsComponent.newsId,values[`news${props.newsDataToNewsComponent.newsId}СommentaryText`],props.userId,props.userName)
         switchToCommentaryMode(false)
     } 
     const[addCommentaryMode,switchToCommentaryMode] = useState(false)
-    const[likesCount,likesCountIncrease] = useState(0)
-
+console.log(props)
     return (
         <div className={style.news} key={props.newsDataToNewsComponent.newsId}>
         <h3 className={style.news__name}>{props.newsDataToNewsComponent.newsName}</h3>
@@ -39,12 +38,12 @@ const News = (props) => {
         </div>
         {addCommentaryMode?<AddNewsCommentaryReduxForm onBlur={()=>{
         switchToCommentaryMode(false)
-        }} onSubmit={onAddCommentary} onKeyPress={(e)=>{if (e.keyCode==13){onAddCommentary()}}} newsId={props.newsDataToNewsComponent.newsId}/>:
+        }} onSubmit={onAddCommentary} newsId={props.newsDataToNewsComponent.newsId}/>:
         <section className={style.news__likeAndCommentaryPanel}>
         <CommentarySign className={style.news__likeAndCommentaryPanel__commentarySign} 
                         onClick={()=>{switchToCommentaryMode(true)}}/>
-        <LikeSign onClick={()=>{likesCountIncrease(likesCount+1)}} className={style.news__likeAndCommentaryPanel__likeSign}/>
-        <p className={style.likeAndCommentaryPanel__likeSign}>{likesCount}</p>
+        <LikeSign onClick={()=>{props.addLike(props.newsDataToNewsComponent.newsId,props.userId)}} className={style.news__likeAndCommentaryPanel__likeSign}/>
+        <p className={style.likeAndCommentaryPanel__likeSign}>{props.newsDataToNewsComponent.likes}</p>
         </section>
         }
         

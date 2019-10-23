@@ -2,9 +2,10 @@ import {newsAPI} from '../api/api'
 
 const ADD_COMMENTARY_FOR_NEWS = 'news-reducer/WRITE_COMMENTARY_FOR_NEWS'
 const GET_NEWS_DATA_SUCESS = 'news-reducer/GET_NEWS_DATA_SUCESS'
+const UPDATE_NEWS_COMMENTARIES = 'news-reducer/UPDATE_NEWS_COMMENTARIES'
 
 let initialNewsPage = {
-    newsData: [1,2,3]
+    newsData: []
 }
 
 const newsReducer = (state=initialNewsPage,action) => {
@@ -15,25 +16,41 @@ const newsReducer = (state=initialNewsPage,action) => {
                 newsData: action.newsData
             })
         }
-        case ADD_COMMENTARY_FOR_NEWS:
-            let commentedNews=state.newsData.filter(news=>news.newsId==action.newsId)[0]
-            commentedNews.commentaries.push(action.newCommentaryTextValue)
-            return (
-                { 
-                ...state,
-                newsData: [...state.newsData]
 
-                
-        })
+        case UPDATE_NEWS_COMMENTARIES: {
+            const commentedNewsId = action.newsData._id
+            const commentedNews = state.newsData.filter(news=>news._id==commentedNewsId)
+            return ({
+                ...state,
+                newsData: commentedNews
+            })
+        }
         default: {
             return state}}}
 
 export const getNewsDataSucess = (newsData) => ({type: GET_NEWS_DATA_SUCESS,newsData})
+export const updateNewsCommentaries = (newsData) => ({type: UPDATE_NEWS_COMMENTARIES,newsData})
+
 export const getNewsData = (newsCount=3) => async (dispatch) => {
             let data = await newsAPI.getNewsData(newsCount)
             dispatch(getNewsDataSucess(data))
 }
-export const addCommentaryForNews = (refNewsId,newCommentaryTextValue,userId,userName) => ({type: ADD_COMMENTARY_FOR_NEWS, refNewsId, newCommentaryTextValue,userId,userName})
+export const addCommentaryForNews = (refNewsId,newsId,newCommentaryTextValue) => async (dispatch) => {
+            let res = await newsAPI.postCommentary(refNewsId,newsId,newCommentaryTextValue)
+            if(res.status===200) {
+            let data = await newsAPI.getNewsData()
+            dispatch(getNewsDataSucess(data))
+            }
+}
+
+export const addLike = (newsId,userId) => async (dispatch) => {
+    debugger
+    let res = await newsAPI.addLike(newsId,userId)
+    if(res.status===200) {
+    let data = await newsAPI.getNewsData()
+    dispatch(getNewsDataSucess(data))
+    }
+}
 
 export default newsReducer
 

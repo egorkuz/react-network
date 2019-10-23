@@ -84,8 +84,11 @@ export const newsAPI = {
     getNewsData(newsCount) {
         return heroku.get(`news?${newsCount}`).then(res=>res.data)
     },
-    postCommentary(_id,commentaryText) {
-        return heroku.patch(`news`,{_id,commentaryText}).then(res=>res.data)
+    postCommentary(_id,newsId,commentaryText) {
+        return heroku.patch(`news/${newsId}/commentaries`,{_id,commentaryText})
+    },
+    addLike(newsId,userId) {
+        return heroku.patch(`news/${newsId}/likes`,{userId})
     }
 }
 export default usersAPI
