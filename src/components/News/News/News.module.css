@@ -12,7 +12,7 @@
 }
 
 .news img {
-    width: 60%; 
+    width: 35px; 
 }
 .button {
     box-sizing: border-box;
@@ -37,20 +37,24 @@
 .news__likeAndCommentaryPanel {
     display: flex;
     align-items: center;
-    margin-left: .5em;
 }
 .news__likeAndCommentaryPanel__commentarySign, .news__likeAndCommentaryPanel__likeSign {
-    width: 4em;
+    width: 35px;
     transition: 0.15s ease;
     display: inline-block;
+    margin-right: .4em; 
 }
 .news__likeAndCommentaryPanel__likeSign {
     margin-bottom: 0;
+    border-radius: .3em;
 }
 .likeAndCommentaryPanel__likeSign {
     margin-bottom: 0;
     font-size: 1.7em;
     color: lightsalmon;
+}
+.isLiked {
+    background-image: radial-gradient(green,lightGreen);
 }
 .news__likeAndCommentaryPanel__commentarySign:hover, .news__likeAndCommentaryPanel__likeSign:hover {
     transform: scale(1.05)

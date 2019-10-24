@@ -1,5 +1,4 @@
 import * as axios from 'axios'
-import { savePhoto } from '../redux/profile-reducer'
 
 const instance = axios.create(
     {
@@ -89,6 +88,9 @@ export const newsAPI = {
     },
     addLike(newsId,userId) {
         return heroku.patch(`news/${newsId}/likes`,{userId})
+    },
+    deleteLike(newsId,userId) {
+        return heroku.delete(`news/${newsId}/likes`,{userId})
     }
 }
 export default usersAPI

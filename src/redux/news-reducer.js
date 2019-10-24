@@ -44,8 +44,15 @@ export const addCommentaryForNews = (refNewsId,newsId,newCommentaryTextValue) =>
 }
 
 export const addLike = (newsId,userId) => async (dispatch) => {
-    debugger
     let res = await newsAPI.addLike(newsId,userId)
+    if(res.status===200) {
+    let data = await newsAPI.getNewsData()
+    dispatch(getNewsDataSucess(data))
+    }
+}
+
+export const deleteLike = (newsId,userId) => async (dispatch) => {
+    let res = await newsAPI.deleteLike(newsId,userId)
     if(res.status===200) {
     let data = await newsAPI.getNewsData()
     dispatch(getNewsDataSucess(data))

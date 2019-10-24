@@ -3,15 +3,15 @@ import style from "./NewsList.module.css"
 import {useEffect} from 'react'
 import News from "./News/News"
 import {connect} from 'react-redux'
-import {getNewsData,addCommentaryForNews,addLike} from '../../redux/news-reducer'
+import {getNewsData,addCommentaryForNews,addLike,deleteLike} from '../../redux/news-reducer'
 import Preloader from "../common/Preloader/Preloader"
 
-const NewsList = ({newsList,userId,userName,getNewsData,addCommentaryForNews,addLike}) => {
+const NewsList = ({newsList,userId,userName,getNewsData,addCommentaryForNews,addLike,deleteLike}) => {
     useEffect(()=>{
         getNewsData()
     },[])
      if(!newsList){return <Preloader />}
-     let newsListToRender = newsList.map(newsData=><News userId={userId} userName={userName} addCommentaryForNews={addCommentaryForNews} addLike={addLike} newsDataToNewsComponent={newsData} />)
+     let newsListToRender = newsList.map(newsData=><News userId={userId} userName={userName} addCommentaryForNews={addCommentaryForNews} addLike={addLike} deleteLike={deleteLike} newsDataToNewsComponent={newsData} />)
      return (
         <section>
             {newsListToRender}
@@ -26,6 +26,6 @@ let mapStateToProps = (state) => {
     }
     
 }
-const NewsListContain = connect(mapStateToProps,{addCommentaryForNews,getNewsData,addLike})(NewsList)
+const NewsListContain = connect(mapStateToProps,{addCommentaryForNews,getNewsData,addLike,deleteLike})(NewsList)
 
 export default NewsListContain

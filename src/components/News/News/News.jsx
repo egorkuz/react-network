@@ -26,7 +26,10 @@ const News = (props) => {
         switchToCommentaryMode(false)
     } 
     const[addCommentaryMode,switchToCommentaryMode] = useState(false)
-console.log(props)
+    if (props.newsDataToNewsComponent.newsId==1){
+        console.log(props)
+    }
+    
     return (
         <div className={style.news} key={props.newsDataToNewsComponent.newsId}>
         <h3 className={style.news__name}>{props.newsDataToNewsComponent.newsName}</h3>
@@ -42,7 +45,10 @@ console.log(props)
         <section className={style.news__likeAndCommentaryPanel}>
         <CommentarySign className={style.news__likeAndCommentaryPanel__commentarySign} 
                         onClick={()=>{switchToCommentaryMode(true)}}/>
-        <LikeSign onClick={()=>{props.addLike(props.newsDataToNewsComponent.newsId,props.userId)}} className={style.news__likeAndCommentaryPanel__likeSign}/>
+                       
+        {props.newsDataToNewsComponent.usersLikes.some(user=>user==props.userId)?
+        <LikeSign onClick={()=>{props.deleteLike(props.newsDataToNewsComponent.newsId,props.userId)}} className={style.news__likeAndCommentaryPanel__likeSign + ' ' + style.isLiked}/>:
+        <LikeSign onClick={()=>{props.addLike(props.newsDataToNewsComponent.newsId,props.userId)}} className={style.news__likeAndCommentaryPanel__likeSign}/>}
         <p className={style.likeAndCommentaryPanel__likeSign}>{props.newsDataToNewsComponent.likes}</p>
         </section>
         }
