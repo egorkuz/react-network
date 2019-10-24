@@ -20,7 +20,6 @@ const AddNewsCommentaryForm = (props) => {
 const AddNewsCommentaryReduxForm = reduxForm({form: "addNewsCommentaryReduxForm"})(AddNewsCommentaryForm)
 
 const News = (props) => {
-    
     let onAddCommentary = (values) => {
         props.addCommentaryForNews(props.newsDataToNewsComponent._id,props.newsDataToNewsComponent.newsId,values[`news${props.newsDataToNewsComponent.newsId}СommentaryText`],props.userId,props.userName)
         switchToCommentaryMode(false)
@@ -29,7 +28,8 @@ const News = (props) => {
     if (props.newsDataToNewsComponent.newsId==1){
         console.log(props)
     }
-    
+    let likeSign = React.createRef()
+    const[likeInProgress,setLikeInProgress]=useState(false)
     return (
         <div className={style.news} key={props.newsDataToNewsComponent.newsId}>
         <h3 className={style.news__name}>{props.newsDataToNewsComponent.newsName}</h3>
@@ -47,8 +47,8 @@ const News = (props) => {
                         onClick={()=>{switchToCommentaryMode(true)}}/>
                        
         {props.newsDataToNewsComponent.usersLikes.some(user=>user==props.userId)?
-        <LikeSign onClick={()=>{props.deleteLike(props.newsDataToNewsComponent.newsId,props.userId)}} className={style.news__likeAndCommentaryPanel__likeSign + ' ' + style.isLiked}/>:
-        <LikeSign onClick={()=>{props.addLike(props.newsDataToNewsComponent.newsId,props.userId)}} className={style.news__likeAndCommentaryPanel__likeSign}/>}
+        <LikeSign onClick={(e)=>{props.deleteLike(props.newsDataToNewsComponent.newsId,props.userId)}} className={style.news__likeAndCommentaryPanel__likeSign + ' ' + style.isLiked}/>:
+        <LikeSign onClick={(e)=>{props.addLike(props.newsDataToNewsComponent.newsId,props.userId)}} className={style.news__likeAndCommentaryPanel__likeSign}/>}
         <p className={style.likeAndCommentaryPanel__likeSign}>{props.newsDataToNewsComponent.likes}</p>
         </section>
         }

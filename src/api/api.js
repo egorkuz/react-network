@@ -81,7 +81,7 @@ export const securityAPI = {
 
 export const newsAPI = {
     getNewsData(newsCount) {
-        return heroku.get(`news?${newsCount}`).then(res=>res.data)
+        return heroku.get(`news?count=${newsCount}`).then(res=>res.data)
     },
     postCommentary(_id,newsId,commentaryText) {
         return heroku.patch(`news/${newsId}/commentaries`,{_id,commentaryText})
@@ -90,7 +90,7 @@ export const newsAPI = {
         return heroku.patch(`news/${newsId}/likes`,{userId})
     },
     deleteLike(newsId,userId) {
-        return heroku.delete(`news/${newsId}/likes`,{userId})
+        return heroku.delete(`news/${newsId}/likes`,{data: {"userId": userId}})
     }
 }
 export default usersAPI
