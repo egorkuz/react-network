@@ -1,4 +1,5 @@
 import React from "react"
+import ReactDOM from 'react-dom'
 import style from "./News.module.css"
 import {reduxForm, Field, Form} from 'redux-form'
 import {required,maxLengthCreator} from '../../../utils/validation/validation.js'
@@ -25,16 +26,12 @@ const News = (props) => {
         switchToCommentaryMode(false)
     } 
     const[addCommentaryMode,switchToCommentaryMode] = useState(false)
-    if (props.newsDataToNewsComponent.newsId==1){
-        console.log(props)
-    }
-    let likeSign = React.createRef()
     const[likeInProgress,setLikeInProgress]=useState(false)
     return (
         <div className={style.news} key={props.newsDataToNewsComponent.newsId}>
         <h3 className={style.news__name}>{props.newsDataToNewsComponent.newsName}</h3>
-        <p className={style.news__date}>{props.newsDataToNewsComponent.date}</p>
-        <img src={props.newsDataToNewsComponent.newsImage} alt=""/>
+        <p className={style.news__date}>{props.newsDataToNewsComponent.date.substring(10,-10)}</p>
+        <img className={style.news__hero} src={props.newsDataToNewsComponent.newsImage||"https://www.grekomania.ru/images/places/19/cyclades/santorini/big/88316_Famous-Santorini-sunset-3.jpg"} alt=""/>
         <p>{props.newsDataToNewsComponent.newsText}</p>
         <NewsCommentaries newsData={props.newsDataToNewsComponent}/>
         <div className={style.news__likeAndCommentaryPanel}>
@@ -47,8 +44,9 @@ const News = (props) => {
                         onClick={()=>{switchToCommentaryMode(true)}}/>
                        
         {props.newsDataToNewsComponent.usersLikes.some(user=>user==props.userId)?
-        <LikeSign onClick={(e)=>{props.deleteLike(props.newsDataToNewsComponent.newsId,props.userId)}} className={style.news__likeAndCommentaryPanel__likeSign + ' ' + style.isLiked}/>:
-        <LikeSign onClick={(e)=>{props.addLike(props.newsDataToNewsComponent.newsId,props.userId)}} className={style.news__likeAndCommentaryPanel__likeSign}/>}
+        <LikeSign onClick={()=>{
+            props.deleteLike(props.newsDataToNewsComponent.newsId,props.userId)}} className={style.news__likeAndCommentaryPanel__likeSign + ' ' + style.isLiked}/>:
+        <LikeSign onClick={()=>{props.addLike(props.newsDataToNewsComponent.newsId,props.userId)}} className={style.news__likeAndCommentaryPanel__likeSign}/>}
         <p className={style.likeAndCommentaryPanel__likeSign}>{props.newsDataToNewsComponent.likes}</p>
         </section>
         }

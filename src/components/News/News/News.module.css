@@ -11,8 +11,8 @@
     padding: .7em 1.5em 1.5em 1.2em 
 }
 
-.news img {
-    width: 35px; 
+.news__hero {
+    width: 500px;
 }
 .button {
     box-sizing: border-box;

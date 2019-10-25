@@ -45,7 +45,8 @@ export const addCommentaryForNews = (refNewsId,newsId,newCommentaryTextValue) =>
 
 export const addLike = (newsId,userId) => async (dispatch) => {
     let res = await newsAPI.addLike(newsId,userId)
-    if(res.status===200) {
+    console.log(res)
+    if(res.status===200&&res.data!=null) {
     let data = await newsAPI.getNewsData()
     dispatch(getNewsDataSucess(data))
     }
@@ -53,7 +54,7 @@ export const addLike = (newsId,userId) => async (dispatch) => {
 
 export const deleteLike = (newsId,userId) => async (dispatch) => {
     let res = await newsAPI.deleteLike(newsId,userId)
-    if(res.status===200) {
+    if(res.status===200&&res.data!=null) {
     let data = await newsAPI.getNewsData()
     dispatch(getNewsDataSucess(data))
     }

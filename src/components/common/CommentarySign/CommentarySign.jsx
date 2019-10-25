@@ -4,7 +4,7 @@ import commentary from '../../../assets/images/commentary.png'
 
 const CommentarySign = (props) => {
     return (<div className={props.className} onClick={props.onClick}>
-    <img className={style.preloader} src={commentary} />
+    <img className={style.commentary} src={commentary} />
     </div>
     )
 }
