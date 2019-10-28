@@ -31,16 +31,24 @@ const newsReducer = (state=initialNewsPage,action) => {
 export const getNewsDataSucess = (newsData) => ({type: GET_NEWS_DATA_SUCESS,newsData})
 export const updateNewsCommentaries = (newsData) => ({type: UPDATE_NEWS_COMMENTARIES,newsData})
 
-export const getNewsData = (newsCount=3) => async (dispatch) => {
+export const getNewsData = (newsCount) => async (dispatch) => {
             let data = await newsAPI.getNewsData(newsCount)
             dispatch(getNewsDataSucess(data))
 }
-export const addCommentaryForNews = (refNewsId,newsId,newCommentaryTextValue) => async (dispatch) => {
-            let res = await newsAPI.postCommentary(refNewsId,newsId,newCommentaryTextValue)
+export const addCommentaryForNews = (newsId,commentaryText,userName,userId) => async (dispatch) => {
+            let res = await newsAPI.postCommentary(newsId,commentaryText,userName,userId)
             if(res.status===200) {
             let data = await newsAPI.getNewsData()
             dispatch(getNewsDataSucess(data))
             }
+}
+
+export const deleteCommentaryForNews = (newsId,commentaryId) => async (dispatch) => {
+    let res = await newsAPI.deleteCommentary(newsId,commentaryId)
+    if(res.status===200) {
+    let data = await newsAPI.getNewsData()
+    dispatch(getNewsDataSucess(data))
+    }
 }
 
 export const addLike = (newsId,userId) => async (dispatch) => {

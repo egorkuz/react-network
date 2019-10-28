@@ -22,7 +22,7 @@ const AddNewsCommentaryReduxForm = reduxForm({form: "addNewsCommentaryReduxForm"
 
 const News = (props) => {
     let onAddCommentary = (values) => {
-        props.addCommentaryForNews(props.newsDataToNewsComponent._id,props.newsDataToNewsComponent.newsId,values[`news${props.newsDataToNewsComponent.newsId}СommentaryText`],props.userId,props.userName)
+        props.addCommentaryForNews(props.newsDataToNewsComponent.newsId,values[`news${props.newsDataToNewsComponent.newsId}СommentaryText`],props.userName,props.userId)
         switchToCommentaryMode(false)
     } 
     const[addCommentaryMode,switchToCommentaryMode] = useState(false)
@@ -33,7 +33,7 @@ const News = (props) => {
         <p className={style.news__date}>{props.newsDataToNewsComponent.date.substring(10,-10)}</p>
         <img className={style.news__hero} src={props.newsDataToNewsComponent.newsImage||"https://www.grekomania.ru/images/places/19/cyclades/santorini/big/88316_Famous-Santorini-sunset-3.jpg"} alt=""/>
         <p>{props.newsDataToNewsComponent.newsText}</p>
-        <NewsCommentaries newsData={props.newsDataToNewsComponent}/>
+        <NewsCommentaries newsData={props.newsDataToNewsComponent} userId={props.userId} deleteCommentaryForNews={props.deleteCommentaryForNews}/>
         <div className={style.news__likeAndCommentaryPanel}>
         </div>
         {addCommentaryMode?<AddNewsCommentaryReduxForm onBlur={()=>{

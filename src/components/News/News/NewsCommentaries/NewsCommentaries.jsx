@@ -1,21 +1,25 @@
 import React from "react"
 import style from "./NewsCommentaries.module.css"
 import Preloader from '../../../common/Preloader/Preloader'
-import {useEffect} from 'react'
 
 const NewsCommentaries = (props) => {
  
   if(!props.newsData.commentaries){return <Preloader/ >}
   let newsCommentariesList = props.newsData.commentaries.map((commentary,index)=>{
-    return <NewsCommentary key={index} commentaryText={commentary.commentaryText}/>})
- return <div>{newsCommentariesList}</div>
+  return <NewsCommentary key={index} newsId={props.newsData.newsId} deleteCommentaryForNews={props.deleteCommentaryForNews} commentary={commentary} userId={props.userId}/>})
+ return <div>
+      <h4 className={style.commentariesName}>{`Комментарии: ${props.newsData.commentaries.length}`}</h4>
+      <div className={style.newsCommentariesList}>{newsCommentariesList}</div>
+   </div>
   }
 
 const NewsCommentary = (props) => {
-      return (<div>
-          <p>Дядя</p>
-          <p className={style.newsCommentary__date}>29 июля</p>
-          <p>{props.commentaryText}</p>
+  console.log(props)
+      return (<div className={style.newsCommentary}>
+          <p>{props.commentary.userName}</p>
+          <p className={style.newsCommentary__date}>{props.commentary.date.substring(10,-10)}</p>
+          <p className={style.newsCommentary__text}>{props.commentary.commentaryText}</p>
+          {props.commentary.userId===props.userId?<button type="submit" onClick={()=>props.deleteCommentaryForNews(props.newsId,props.commentary._id)}>Удалить</button>:null}
           </div>)
 }
 export default NewsCommentaries
