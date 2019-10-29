@@ -19,3 +19,29 @@ p {
     background-image: radial-gradient(bisque,white);
     border-radius: .5em;
 }
+.post__likeAndLikesCountPanel {
+    display: flex;
+    align-items: center;
+}
+.post__likeAndCommentaryPanel__likeSign {
+    width: 35px;
+    transition: 0.15s ease;
+    display: inline-block;
+    margin-right: .4em; 
+    margin-bottom: 0;
+    border-radius: .3em;
+}
+.post__message {
+    margin-bottom: .5em
+}
+.likeAndCommentaryPanel__likeSign {
+    margin-bottom: 0;
+    font-size: 1.7em;
+    color: lightsalmon;
+}
+.isLiked {
+    background-image: radial-gradient(green,lightGreen);
+}
+.post__likeAndCommentaryPanel__likeSign:hover {
+    transform: scale(1.05)
+}
