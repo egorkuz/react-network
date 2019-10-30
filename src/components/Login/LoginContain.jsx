@@ -7,20 +7,17 @@ import {connect} from 'react-redux'
 import {login} from '../../redux/auth-reducer'
 import {Redirect} from 'react-router-dom'
 
-let maxLengthCreatorValidate = maxLengthCreator(40)
-
 const LoginForm = (props) => {
-    console.log(props.captchaUrl)
         return (
             <Form className={style.loginForm} onSubmit={props.handleSubmit}>
             <div>
-                <Field validate={[required,maxLengthCreatorValidate]} placeholder={'Логин'} name={"email"} component={Input}/> 
+                <Field validate={[required]} placeholder={'Логин'} name={"email"} component={Input}/> 
             </div>
             <div>
-                <Field validate={[required,maxLengthCreatorValidate]} placeholder={'Пароль'} name={"password"} type={"password"} component={Input}/> 
+                <Field validate={[required]} placeholder={'Пароль'} name={"password"} type={"password"} component={Input}/> 
             </div>
             <div>
-                <Field validate={[required,maxLengthCreatorValidate]} type={'checkbox'} name={'rememberMe'} component={'input'}/>Запомнить
+                <Field validate={[required]} type={'checkbox'} name={'rememberMe'} component={'input'}/>Запомнить
             </div>
             <div>
                 <button type='submit'>Войти</button>
