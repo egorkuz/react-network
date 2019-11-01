@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 
 let mapStateToPropsForRedirect = (state) => (
     {
-        isAuth: state.auth.isAuth
+        isAuth: state.authentication.isAuth
     }
 )
 

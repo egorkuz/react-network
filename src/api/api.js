@@ -73,7 +73,14 @@ export const authAPI = {
         return instance.delete(`auth/login`).then(res=>res.data) 
         }
 }
-
+export const authenticationAPI = {
+    authMe() {
+    return heroku.get(`auth/me`)
+    },
+    login(email,password) {
+    return heroku.post(`user/login`,{email,password})
+    }
+}
 export const securityAPI = {
     getCapchaUrl() {
         return instance.get(`security/get-captcha-url`).then(res=>res.data)

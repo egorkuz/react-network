@@ -1,6 +1,5 @@
 import { setAuthUserDataThunk } from "./auth-reducer";
 
-const SET_INITIALIZED = 'SET_INITIALIZED'
 const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS'
 
 let initialState = {

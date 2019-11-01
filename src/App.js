@@ -8,7 +8,6 @@ import {Route, Switch, withRouter,Redirect} from 'react-router-dom'
 import ProfileContain from './components/Profile/ProfileContain';
 import LoginContain from './components/Login/LoginContain'
 import {connect} from 'react-redux'
-import {setAuthUserDataThunk} from './redux/auth-reducer'
 import {compose} from 'redux'
 import LatestComments from "./components/Sidebar/LatestComments"
 import Preloader from './components/common/Preloader/Preloader'
@@ -64,4 +63,4 @@ let mapStateToProps = (state) => {
   })
 }
 
-export default compose(connect(mapStateToProps, {setAuthUserDataThunk,initializedApp}),withRouter)(App);
+export default compose(connect(mapStateToProps, {initializedApp}),withRouter)(App);
