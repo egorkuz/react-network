@@ -17,7 +17,7 @@
 }
 .content {
   grid-area: content;
-  background-color: crimson;
+  background-color: 	rgb(208, 232, 235);
  }
  .sidebar {
    background-color: orange

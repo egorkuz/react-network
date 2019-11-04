@@ -59,7 +59,26 @@ export const profileAPI = {
         return instance.put(`profile`,
             profile
         )
-    }
+    },
+    getPosts(userId) {
+        return heroku.get(`/posts/${userId}`,)
+    },
+    savePost(userId,postText) {
+        return heroku.post(`/posts`,{uid: userId,postText: postText})
+    },
+    deletePost(postId) {
+        return heroku.delete(`/posts`,{data: {"postId": postId}})
+    },
+    getOnePost(userId,postId){
+        return heroku.get(`/posts/${userId}/${postId}`)
+    },
+    updatePost(postId,newPostText) {
+        return heroku.patch(`/posts/${postId}`,{newPostText: newPostText})
+    },
+    addLike(postId,userId) {
+        return heroku.patch(`posts/${postId}/likes`,{uid: userId})},
+    deleteLike(postId,userId){
+        return heroku.delete(`posts/${postId}/likes`,{data: {"uid": userId}})}
 }
 
 export const authAPI = {

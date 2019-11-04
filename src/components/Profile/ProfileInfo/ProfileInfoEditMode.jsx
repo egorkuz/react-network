@@ -21,14 +21,14 @@ const ProfileInfoEditMode = (props) => {
   )}
 </NavigationPrompt> 
     {props.profile.photos.small==null?<img className={style.profileInfo__avatar} src="http://www.galerieserge.ru/pic/ava/noava.png" alt="noAva"/>:<img className={style.profileInfo__avatar} src={props.profile.photos.small} alt="avatar"/>}
-    {props.autorizedUserProfile?<input onChange={props.onAvatarUploading} className={style.profileInfo__uploadAvatar} name="Изменить аватар" type="file" />:null}
+    {props.autorizedUserProfile?<label>Загрузить фото<input onChange={props.onAvatarUploading} className={style.profileInfo__uploadAvatar} name="Изменить аватар" type="file" /></label>:null}
     {props.autorizedUserProfile?<button type="submit" className={style.profileInfo__editMode}>Сохранить изменения</button>:null}
     {props.profile.userId!=props.autorizedUserId?<p>{props.status}</p>:<Status status = {props.status} updateStatusThunk={props.updateStatusThunk}/>}
     <p><b>Имя:</b> {props.profile.fullName}</p> {CreateField([],"Full name","fullName",Input,null,style.profileInfoEditMode__input)}
     <p><b>Город:</b> LA, USA</p>
     <p><b>Возраст: </b> 18 лет</p>
     <p><b>Обо мне: </b>{props.profile.aboutMe}</p> {CreateField([],"About me","aboutMe",Input,null,style.profileInfoEditMode__input)}
-    <p><b>Место работы: </b></p>{props.profile.lookingForAJob?<p>Ищу работу с зп от 10k$/mon.</p>:<span>"HOLLYWOOD"</span>}{CreateField([],"Looking for a job","lookingForAJob",Input,{type: "checkbox"},style.profileInfoEditMode__checkbox)}
+    <span><b>Место работы: </b></span>{props.profile.lookingForAJob?<p>Ищу работу</p>:<span>Не ищу работу</span>}{CreateField([],"Looking for a job","lookingForAJob",Input,{type: "checkbox"},style.profileInfoEditMode__checkbox)}
     <p><b>Контакты: </b></p>
     {Object.keys(props.profile.contacts).map((key,index)=>{return <div><Contact key={key} error={props.error} contactTitle={key} contactValue={props.profile.contacts[index]}/>{CreateField([],`${key}`,`Contacts.${key}`,Input,{},style.profileInfoEditMode__input)}</div>})}
     </form>

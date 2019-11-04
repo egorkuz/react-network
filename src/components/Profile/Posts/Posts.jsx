@@ -9,9 +9,8 @@ let maxLengthCreatorValidate = maxLengthCreator(40)
 
 const AddNewPostForm = (props) => {
     return  <Form onSubmit={props.handleSubmit} className={classes.newPostTextarea}>
-                <Field rows='8' validate={[required,maxLengthCreatorValidate]} className={classes.posts__textarea} placeholder={props.newPostText} name={"sendNewPostTextAreaValue"} component={Textarea}/>
-
-                <button className={classes.send}>Новый пост</button>
+                <Field rows='8' validate={[required,maxLengthCreatorValidate]} placeholder={props.newPostText} name={"sendNewPostTextAreaValue"} component={Textarea}/>
+                <button className={classes.send} onKeyPress={(e)=>{if(e.key === 'Enter'){props.handleSubmit()}}}>Новый пост</button>
             </Form>
 }
 
@@ -21,10 +20,21 @@ const AddNewPostReduxForm = reduxForm({form: 'addNewPostForm'})(AddNewPostForm)
 const Posts = (props) => {
     let postsElements = props.postsData.map( post=> {
         return(
-        <Post name={props.userName} message={post.message} />)
+        <Post key={post.postId} 
+        name={props.userName}
+        deletePost={props.deletePost} 
+        addLike={props.addLike}
+        deleteLike={props.deleteLike} 
+        usersLikes={post.usersLikes} 
+        likes={post.likes} 
+        userId={props.userId} 
+        uid={post.uid} 
+        postId={post.postId}
+        postText={post.postText} 
+        date={new Date(post.date).toLocaleString()}/>)
     })
     let onAddPost = (values) => {
-        props.addPost(values.sendNewPostTextAreaValue)
+        props.addPost(props.userId,values.sendNewPostTextAreaValue)
     }
     return (
     <div>

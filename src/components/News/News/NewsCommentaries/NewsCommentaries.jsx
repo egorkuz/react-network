@@ -14,10 +14,9 @@ const NewsCommentaries = (props) => {
   }
 
 const NewsCommentary = (props) => {
-  console.log(props)
       return (<div className={style.newsCommentary}>
           <p>{props.commentary.userName}</p>
-          <p className={style.newsCommentary__date}>{props.commentary.date.substring(10,-10)}</p>
+          <p className={style.newsCommentary__date}>{new Date(props.commentary.date).toLocaleString()}</p>
           <p className={style.newsCommentary__text}>{props.commentary.commentaryText}</p>
           {props.commentary.userId===props.userId?<button type="submit" onClick={()=>props.deleteCommentaryForNews(props.newsId,props.commentary._id)}>Удалить</button>:null}
           </div>)

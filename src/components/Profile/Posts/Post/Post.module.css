@@ -23,7 +23,7 @@ p {
     display: flex;
     align-items: center;
 }
-.post__likeAndCommentaryPanel__likeSign {
+.post__likeSign {
     width: 35px;
     transition: 0.15s ease;
     display: inline-block;
@@ -42,6 +42,18 @@ p {
 .isLiked {
     background-image: radial-gradient(green,lightGreen);
 }
-.post__likeAndCommentaryPanel__likeSign:hover {
+.post__like {
+    display: flex;
+    align-items: center;
+}
+.post__likeSign:hover {
     transform: scale(1.05)
+}
+.post__likesCount {
+    display: inline-block;
+    font-size: 1.7em;
+    color: lightsalmon;
+}
+.button_delete {
+    float: right;
 }

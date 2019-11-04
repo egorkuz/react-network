@@ -3,18 +3,46 @@
     margin-left: 1em;
 }
 .profileInfo__avatar {
-    width: 10%;
+    width: 12%;
 }
-.profileInfo__uploadAvatar, .profileInfo__editMode {
+.profileInfo__uploadAvatar {
     display: block;
-    margin-bottom: .3em;
-    border-radius: .5em;
-    background-image: radial-gradient(lightpink,lightskyblue);
+}
+
+.profileInfo__editMode {
+        margin-top: .3em;
+        display: block;
+        background-color: #0693cd;
+        border: 0;
+        border-radius: .3em;   
+        cursor: pointer;
+        color: #fff;
+        font-size: .7em;
+        font-weight: bold;
+        line-height: 1.2;
+        padding: .7em;
+        width: 12%;
 }
 .profileInfoEditMode__input {
     width: 20%;
 }
 .profileInfoEditMode__checkbox {
-    width: 5%;
+    width: 3%;
     border: none;
 }
+input[type="file"] {
+    
+    height: 0;
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+label {
+    width: 10.8%;
+    font-size: .6rem;
+    text-align: center;
+    display: block;
+    background: rgb(223, 65, 65);
+    padding: 5px;
+    border: 1px dashed red;
+  }

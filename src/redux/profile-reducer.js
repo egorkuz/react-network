@@ -1,36 +1,31 @@
 import usersAPI, {profileAPI} from '../api/api'
 import {stopSubmit} from 'redux-form'
 
-
 const ADD_POST = 'profile-reducer/ADD-POST';
-const DELETE_POST = 'DELETE_POST'
-const SET_USER_PROFILE = 'SET_USER_PROFILE'
-const SET_USER_STATUS = 'SET_USER_STATUS'
+const DELETE_POST = 'profile-reducer/DELETE_POST'
+const SET_USER_PROFILE = 'profile-reducer/SET_USER_PROFILE'
+const SET_USER_STATUS = 'profile-reducer/SET_USER_STATUS'
 const SAVE_PHOTO_SUCESS = "profile-reducer/SAVE_PHOTO_SUCESS"
+const GET_POSTS_DATA_SUCESS = "profile-reducer/GET_POSTS_DATA_SUCESS"
 
 let initialProfilePage = {
-    postsData: [
-        {id: 1, message: "Я на Бали"},
-        {id: 2, message: "Я на Багамах"},
-        {id: 3, message: "Я на Гаваях"},
-        {id: 4, message: "Я в Майами"},
-        {id: 5, message: "Я в Амстердаме"}
-    ],
-    newPostText: 'Imma ride',
+    postsData: [],
+    newPostText: 'Whats up?',
     profile: null,
     status: ''
 }
 const profileReducer = (state=initialProfilePage,action) => {
     switch(action.type) { 
-        case ADD_POST: 
-            let newPost = {
-            id: 6,
-            message: action.newPostTextValue
-            }
+        // case ADD_POST: 
+        //     return ({
+        //         ...state,
+        //         postsData: [...action.posts],
+        //         newPostText: ''
+        //     })
+        case GET_POSTS_DATA_SUCESS:
             return ({
                 ...state,
-                postsData: [...state.postsData,newPost],
-                newPostText: ''
+                postsData: [...action.postsData].reverse()
             })
         case SET_USER_PROFILE:{
         return({
@@ -63,8 +58,33 @@ const profileReducer = (state=initialProfilePage,action) => {
 
 
 
-export const addPostCreator = (newPostTextValue) => ({type: ADD_POST,newPostTextValue})
-export const deletePostCreator = (postId) => ({type: DELETE_POST,postId})
+export const getPostsDataSucess = (postsData) => ({type: GET_POSTS_DATA_SUCESS,postsData})
+
+export const getPosts = (userId) => async (dispatch) => {
+    let res = await profileAPI.getPosts(userId)
+    if (res.status===200){
+    dispatch(getPostsDataSucess(res.data))  
+}}
+export const addPost = (userId,newPostTextValue) => async (dispatch)=>{
+    let res = await profileAPI.savePost(userId,newPostTextValue)
+    if (res.status===200){
+    dispatch(getPosts(userId))}
+}
+export const deletePost = (postId,userId) => async (dispatch)=>{
+    let res = await profileAPI.deletePost(postId)
+    if (res.status===200){
+    dispatch(getPosts(userId))}
+}
+export const addLike = (postId,userId) => async (dispatch)=>{
+    let res = await profileAPI.addLike(postId,userId)
+    if (res.status===200){
+    dispatch(getPosts(userId))}
+}
+export const deleteLike = (postId,userId) => async (dispatch)=>{
+    let res = await profileAPI.deleteLike(postId,userId)
+    if (res.status===200){
+    dispatch(getPosts(userId))}
+}
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE,profile})
 export const setUserStatus = (status) => ({type: SET_USER_STATUS, status})
 export const savePhotoSucess = (photos) => ({type: SAVE_PHOTO_SUCESS, photos})
@@ -98,10 +118,15 @@ export const saveProfileChanges = (formData) => async (dispatch,getState) => {
         if(res.data.resultCode===0) {
             dispatch(setUserProfileThunk(userId))
         }
-        /*else {
+        else {
             console.log(res.data.messages)
             let message = res.data.messages[0]
             dispatch(stopSubmit("ProfileInfoEditMode",{_error: message}))
-        }*/
+        }
 }
 export default profileReducer;
+// {id: 1, message: "Я на Бали"},
+// {id: 2, message: "Я на Багамах"},
+// {id: 3, message: "Я на Гаваях"},
+// {id: 4, message: "Я в Майами"},
+// {id: 5, message: "Я в Амстердаме"}

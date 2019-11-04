@@ -3,9 +3,16 @@
     margin: 1em 0 2em 1em;
   }
   .send {
-      display: block;
-      border-radius: .5em;
-      margin-left: -.2em;
-      background-image: radial-gradient(lightpink,lightskyblue);
-      padding: 1em;
+    margin-top: .3em;
+    display: block;
+    background-color: #0693cd;
+    border: 0;
+    border-radius: .3em;   
+    cursor: pointer;
+    color: #fff;
+    font-size: .9em;
+    font-weight: bold;
+    line-height: 1.4;
+    padding: .8em;
+    width: 8em;
   }

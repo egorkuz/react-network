@@ -8,6 +8,7 @@
     "classnames": "^2.2.6",
     "react": "^16.9.0",
     "react-beforeunload": "^2.1.0",
+    "react-contenteditable": "^3.3.2",
     "react-dom": "^16.9.0",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",

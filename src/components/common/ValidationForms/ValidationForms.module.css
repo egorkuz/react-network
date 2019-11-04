@@ -1,18 +1,29 @@
-.textarea {
-    font-size: 13.3333px;
+.input {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
     margin: 0;
-    border: 1px solid blue;
+    border: 2px solid blue;
     border-radius: .3em;
+    width: 18em;
+
   }
-  .textarea > * {
-    width: calc(100% - 4px);
+  .input textarea {
+    flex: 1;
+    font-family:sans-serif;
+    border-radius: .3em;
+    width:100%;
+    box-sizing: border-box;
+    margin: 0;
   }
-  .textarea_zeroValueError,.textarea_maxLengthError {
-      border: 2px solid red;
+  .input_zeroValueError,.textarea_maxLengthError {
+      border: 3px solid red;
   }
-  .textarea_zeroValueError::after{
-      content: "Введите как минимум 1 символ"
+  /* .input_zeroValueError::after{
+      content: "Введите как минимум 1 символ";
+      display: block;
   }
-  .textarea_maxLengthError::after {
-      content: "Превышено максимальное количество символов"
-  }
+  .input_maxLengthError::after {
+      content: "Превышено максимальное количество символов";
+      display: block;
+  }  */

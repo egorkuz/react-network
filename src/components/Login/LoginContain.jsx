@@ -2,10 +2,9 @@ import React from 'react'
 import style from './Login.module.css'
 import {reduxForm, Field, Form} from 'redux-form'
 import {Input} from '../common/ValidationForms/ValidationForms'
-import {required,maxLengthCreator} from '../../utils/validation/validation'
+import {required} from '../../utils/validation/validation'
 import {connect} from 'react-redux'
 import {login} from '../../redux/auth-reducer'
-import {loginH} from '../../redux/authentication-reducer'
 import {Redirect} from 'react-router-dom'
 
 const LoginForm = (props) => {
@@ -31,48 +30,47 @@ const LoginForm = (props) => {
         </Form>
         )
     }
-const LoginHForm = (props) => {
-        return (
-            <Form className={style.loginForm} onSubmit={props.handleSubmit}>
-            <div>
-                <Field validate={[required]} placeholder={'Логин'} name={"email"} component={Input}/> 
-            </div>
-            <div>
-                <Field validate={[required]} placeholder={'Пароль'} name={"password"} type={"password"} component={Input}/> 
-            </div>
-            <div>
-                <Field  type={'checkbox'} name={'rememberMe'} component={'input'}/>Запомнить
-            </div>
-            <div>
-                <button type='submit'>Войти</button>
-            </div>
-            {props.captchaUrl!=null?<img src={props.captchaUrl}/>:null}
-            {props.captchaUrl&& <div>
-                <Field validate={[required]} type={'input'} name={'captcha'} component={'input'}/>Введите символы
-            </div>}
-            {props.error&&<span>{`${props.error}`}</span>}
-        </Form>
-        )
-    }
+// const LoginHForm = (props) => {
+//         return (
+//             <Form className={style.loginForm} onSubmit={props.handleSubmit}>
+//             <div>
+//                 <Field validate={[required]} placeholder={'Логин'} name={"email"} component={Input}/> 
+//             </div>
+//             <div>
+//                 <Field validate={[required]} placeholder={'Пароль'} name={"password"} type={"password"} component={Input}/> 
+//             </div>
+//             <div>
+//                 <Field  type={'checkbox'} name={'rememberMe'} component={'input'}/>Запомнить
+//             </div>
+//             <div>
+//                 <button type='submit'>Войти</button>
+//             </div>
+//             {props.captchaUrl!=null?<img src={props.captchaUrl}/>:null}
+//             {props.captchaUrl&& <div>
+//                 <Field validate={[required]} type={'input'} name={'captcha'} component={'input'}/>Введите символы
+//             </div>}
+//             {props.error&&<span>{`${props.error}`}</span>}
+//         </Form>
+//         )
+//     }
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm)
-const LoginHReduxForm = reduxForm({form: 'loginH'})(LoginHForm)
+// const LoginHReduxForm = reduxForm({form: 'loginH'})(LoginHForm)
 
 class LoginContain extends React.Component {
     onSubmit = (formData) => {
         this.props.login(formData.email,formData.password,formData.rememberMe,formData.captcha)
     }
-    onSubmitViaHAPI = (formData) => {
-        this.props.loginH(formData.email,formData.password)
-    }
+    // onSubmitViaHAPI = (formData) => {
+    //     this.props.loginH(formData.email,formData.password)
+    // }
     render(){
-        return(this.props.isAuthH?
+        return(this.props.isAuth?
             <Redirect to="/profile" />
             :
         <section>
             <h1 className={style.login__name}>Авторизация</h1>
             <LoginReduxForm captchaUrl={this.props.captchaUrl} onSubmit={this.onSubmit}/>
-            <h1 className={style.login__name}>Авторизация через Native API</h1>
-            <LoginHReduxForm onSubmit={this.onSubmitViaHAPI}/>
+            {/* <LoginHReduxForm onSubmit={this.onSubmitViaHAPI}/> */}
             <p className={style.notLogined}>Вы не залогинены</p>
         </section>)
     }
@@ -81,7 +79,6 @@ class LoginContain extends React.Component {
 let mapStateToProps = (state) => ({
     isAuth: state.auth.isAuth,
     captchaUrl: state.auth.captchaUrl,
-    isAuthH: state.authentication.isAuth
 })
 
-export default connect(mapStateToProps,{login,loginH})(LoginContain)
+export default connect(mapStateToProps,{login})(LoginContain)

@@ -21,7 +21,7 @@ const Profile = (props) => {
         uploadPhoto={props.uploadPhoto}
         saveProfileChanges={props.saveProfileChanges}
         />
-        {props.userId==props.autorizedUserId||props.userId==undefined?<PostsContain userName={props.userName}/>:null}
+        {props.userId==props.autorizedUserId||props.userId==undefined?<PostsContain/>:null}
     </div>)}
 
 export default Profile;

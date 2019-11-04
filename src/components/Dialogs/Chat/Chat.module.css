@@ -6,7 +6,15 @@
     background-color: lightcyan; 
   }
   .send {
+    margin-top: .3em;
     display: block;
-    margin-left: 1em;
-    padding: 1em;
-  }
+    background-color: #0693cd;
+    border: 0;
+    border-radius: .3em;   
+    cursor: pointer;
+    color: #fff;
+    font-size: .8em;
+    font-weight: bold;
+    line-height: 1.2;
+    padding: .7em;
+    width: 10em;}

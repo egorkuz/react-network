@@ -24,14 +24,14 @@ const Status = (props) => {
         setStatus(e.currentTarget.value)
     }
        return (
-        <section className={styles.status}>
+        <section>
             {!editMode?
             <div>
-                <span onDoubleClick={activateEditMode}>{`${props.status}`}</span>
+                <span  className={styles.status} onDoubleClick={activateEditMode}>{`${props.status}`}</span>
             </div>
             :
             <div>
-                <input onBlur={deactivateEditMode} onChange={onStatusChange} autoFocus={true}/>
+                <input onBlur={deactivateEditMode} onKeyPress={(e)=>{if(e.key === 'Enter'){deactivateEditMode()}}} onChange={onStatusChange} autoFocus={true}/>
             </div>}
         </section>)}
 

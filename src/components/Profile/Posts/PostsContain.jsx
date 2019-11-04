@@ -1,5 +1,5 @@
 import React from 'react';
-import {addPostCreator} from '../../../redux/profile-reducer'
+import {addPost,deletePost,addLike,deleteLike} from '../../../redux/profile-reducer'
 import Posts from './Posts'
 import {connect} from 'react-redux'
 
@@ -7,13 +7,10 @@ let mapStateToProps = (state) => {
     return {
         postsData: state.profilePage.postsData,
         newPostText: state.profilePage.newPostText,
-        userName: state.auth.login 
+        userName: state.auth.login,
+        userId: state.auth.id 
     }
 }
-let mapDispatchToProps = (dispatch) => {
-        return {
-        addPost: (newPostTextValue) => {dispatch(addPostCreator(newPostTextValue))}
-}}
 
-const PostsContain = connect(mapStateToProps, mapDispatchToProps)(Posts)
+const PostsContain = connect(mapStateToProps, {addPost,deletePost,addLike,deleteLike})(Posts)
 export default PostsContain;
