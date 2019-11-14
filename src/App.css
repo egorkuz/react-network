@@ -11,16 +11,13 @@
   grid-template-areas:
   "header header header"
   "nav content sidebar";
-  grid-template-rows: 8vh 1fr ;
+  grid-template-rows: 6vh 1fr ;
   grid-template-columns: 12% calc(68% - 10px) 20%;
   gap: 5px; 
 }
 .content {
   grid-area: content;
   background-color: 	rgb(208, 232, 235);
- }
- .sidebar {
-   background-color: orange
  }
 
 

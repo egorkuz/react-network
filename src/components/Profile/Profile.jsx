@@ -11,7 +11,7 @@ const Profile = (props) => {
     }*/
     return (
     <div>
-     <div className={style.profile__hero}></div>
+     {/*<div className={style.profile__hero}></div>*/}
         <ProfileInfo userId={props.userId} 
         currentProfile={props.currentProfile} 
         status = {props.status} profile={props.profile} 

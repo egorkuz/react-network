@@ -1,9 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Literata&display=swap');
+
 .header {
     grid-area: header;
-    background-color: aqua;
+    background-color: 	rgb(208, 232, 235);
+    font-family: 'Literata', serif;
+    font-size: .9rem;
   }
 .button_logout {
   display: block;
-  border-radius: .3em;
-  background: radial-gradient(ellipse at center, #CCDFFA, #399EE2);
+  background-color: #0693cd;
+  border: 0;
+  border-radius: .3em;   
+  cursor: pointer;
+  color: #fff;
+  font-size: .7em;
+  font-weight: bold;
+  line-height: 1.4;
+  padding: .2em;
+  width: 5em;
 }
