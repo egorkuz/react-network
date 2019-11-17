@@ -1,13 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Literata&display=swap');
 .nav {
     grid-area: nav;
     background-color: transparent;
+    font-family: 'Literata', serif;
   }
 li {
   margin-left: -1em;
   list-style-type: none;
 }
 li a.navigation {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  /*font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;*/
   color: lightseagreen;
   font-weight: 200;
   text-decoration: none;

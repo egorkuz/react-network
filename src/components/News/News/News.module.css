@@ -15,14 +15,18 @@
     width: 500px;
 }
 .button {
-    box-sizing: border-box;
+    margin-top: .3em;
     display: block;
-    align-self: center;
-    width: 128px;
-    height: 2em;
-    border-radius: .5em;
-    background-image: radial-gradient(pink,aqua);
-    margin-top: .2em;
+    background-color: #0693cd;
+    border: 0;
+    border-radius: .3em;   
+    cursor: pointer;
+    color: #fff;
+    font-size: .9em;
+    font-weight: bold;
+    line-height: 1.4;
+    padding: .5em;
+    width: 30%;
 }
 .news__commentary {
     width: 60%;

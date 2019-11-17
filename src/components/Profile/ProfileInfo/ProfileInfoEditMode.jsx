@@ -21,7 +21,7 @@ const ProfileInfoEditMode = (props) => {
   )}
 </NavigationPrompt> 
     {props.profile.photos.small==null?<img className={style.profileInfo__avatar} src="http://www.galerieserge.ru/pic/ava/noava.png" alt="noAva"/>:<img className={style.profileInfo__avatar} src={props.profile.photos.small} alt="avatar"/>}
-    {props.autorizedUserProfile?<label>Загрузить фото<input onChange={props.onAvatarUploading} className={style.profileInfo__uploadAvatar} name="Изменить аватар" type="file" /></label>:null}
+    {props.autorizedUserProfile?<label className={style.profileInfo__uploadAvatar}>Загрузить фото<input onChange={props.onAvatarUploading} className={style.profileInfo__uploadAvatar} name="Изменить аватар" type="file" /></label>:null}
     {props.autorizedUserProfile?<button type="submit" className={style.profileInfo__editMode}>Сохранить изменения</button>:null}
     {props.profile.userId!=props.autorizedUserId?<p>{props.status}</p>:<Status status = {props.status} updateStatusThunk={props.updateStatusThunk}/>}
     <p><b>Имя:</b> {props.profile.fullName}</p> {CreateField([],"Full name","fullName",Input,null,style.profileInfoEditMode__input)}

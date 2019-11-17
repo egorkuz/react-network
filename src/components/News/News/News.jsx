@@ -30,7 +30,7 @@ const News = (props) => {
     return (
         <div className={style.news} key={props.newsDataToNewsComponent.newsId}>
         <h3 className={style.news__name}>{props.newsDataToNewsComponent.newsName}</h3>
-        <p className={style.news__date}>{props.newsDataToNewsComponent.date.substring(10,-10)}</p>
+        <p className={style.news__date}>{new Date(props.newsDataToNewsComponent.date).toLocaleString().substring(-10,10)}</p>
         <img className={style.news__hero} src={props.newsDataToNewsComponent.newsImage||"https://www.grekomania.ru/images/places/19/cyclades/santorini/big/88316_Famous-Santorini-sunset-3.jpg"} alt=""/>
         <p>{props.newsDataToNewsComponent.newsText}</p>
         <NewsCommentaries newsData={props.newsDataToNewsComponent} userId={props.userId} deleteCommentaryForNews={props.deleteCommentaryForNews}/>
