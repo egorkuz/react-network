@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Literata&display=swap');
 
-
 .header {
     grid-area: header;
     display: flex;
@@ -28,9 +27,9 @@
   border-radius: .3em;   
   cursor: pointer;
   color: #fff;
-  font-size: .7em;
+  font-size: .8rem;
   font-weight: bold;
-  line-height: 1.4;
-  padding: .2em;
-  width: 5em;
+  line-height: .8;
+  padding: .45em;
+  width: 100%;
 }
